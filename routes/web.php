@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::resource('posts', 'PostsController');
+
+Route::resource('postCategories', 'PostCategoryController');
+
+Route::resource('comments', 'CommentsController');
