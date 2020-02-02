@@ -29,7 +29,8 @@ class Posts extends Model
         'user_id',
         'content',
         'category_id',
-        'status'
+        'status',
+        'title'
     ];
 
     /**
@@ -42,7 +43,8 @@ class Posts extends Model
         'user_id' => 'integer',
         'category_id'=>'integer',
         'content' => 'string',
-        'status' => 'integer'
+        'status' => 'integer',
+        'title'=>'string'
     ];
 
     /**
@@ -54,8 +56,25 @@ class Posts extends Model
         'user_id' => 'numeric',
         'category_id'=>'numeric',
         'content' => 'required',
-        'status' => 'numeric'
+        'status' => 'numeric',
+        'title'=>'required'
     ];
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+    public function user()
+    {
+        return $this->hasOne('App\Models\User','id','user_id');
+    }
+    public function category()
+    {
+        return $this->hasOne('App\Models\PostCategory','id','category_id');
+    }
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comments','id','post_id');
+    }
 
     
 }

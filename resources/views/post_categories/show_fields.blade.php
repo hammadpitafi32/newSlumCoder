@@ -3,6 +3,17 @@
     {!! Form::label('category', 'Category:') !!}
     <p>{{ $postCategory->category }}</p>
 </div>
+<div class="form-group">
+    {!! Form::label('image', 'Image:') !!}
+    
+    @if(!empty($postCategory->image_url))
+
+        <img width="50"  src="{{asset('uploads/catgory/')}}/{{$postCategory->image_url}}" width="50">
+    @else
+        <img src="/themeImages/noimage.png" width="50">
+    @endif
+    
+</div>
 
 <!-- Created At Field -->
 <div class="form-group">

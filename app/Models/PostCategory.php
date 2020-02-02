@@ -24,7 +24,7 @@ class PostCategory extends Model
 
 
     public $fillable = [
-        'category'
+        'category','image_url'
     ];
 
     /**
@@ -43,7 +43,8 @@ class PostCategory extends Model
      * @var array
      */
     public static $rules = [
-        'category' => 'required'
+        'category' => 'required',
+        // 'image_url'=> 'required',
     ];
 
     

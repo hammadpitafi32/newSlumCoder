@@ -14,7 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['namespace' => 'front','middleware'=>'front'], function () {
 
+    Route::get('/articles', 'HomeController@index')->name('.articles');
+
+});
+// Route::get('/articles', 'HomeController@index')->name('articles');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

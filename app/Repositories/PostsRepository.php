@@ -39,4 +39,5 @@ class PostsRepository extends BaseRepository
     {
         return Posts::class;
     }
+    
 }

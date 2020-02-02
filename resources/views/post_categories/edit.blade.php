@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('content')
     <section class="content-header">
@@ -11,7 +11,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($postCategory, ['route' => ['postCategories.update', $postCategory->id], 'method' => 'patch']) !!}
+                   {!! Form::model($postCategory, ['route' => ['postCategories.update', $postCategory->id], 'method' => 'patch','files'=>true]) !!}
 
                         @include('post_categories.fields')
 

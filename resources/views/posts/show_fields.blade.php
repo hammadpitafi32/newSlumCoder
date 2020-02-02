@@ -1,19 +1,23 @@
 <!-- User Id Field -->
 <div class="form-group">
-    {!! Form::label('user_id', 'User Id:') !!}
-    <p>{{ $posts->user_id }}</p>
+    {!! Form::label('user', 'User:') !!}
+    <p>{{ $posts->user->name }}</p>
 </div>
 
 <!-- Content Field -->
 <div class="form-group">
-    {!! Form::label('content', 'Content:') !!}
-    <p>{{ $posts->content }}</p>
+    {!! Form::label('title', 'Title:') !!}
+    <p>{{ $posts->title }}</p>
+</div>
+<div class="form-group">
+    {!! Form::label('category', 'Category:') !!}
+    <p>{{ $posts->category->category }}</p>
 </div>
 
 <!-- Status Field -->
 <div class="form-group">
     {!! Form::label('status', 'Status:') !!}
-    <p>{{ $posts->status }}</p>
+    <p>{{ $posts->status==1?'Active':'Disable' }}</p>
 </div>
 
 <!-- Created At Field -->

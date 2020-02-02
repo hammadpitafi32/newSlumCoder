@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'blue',
+    'skin' => 'green',
 
     /*
     |--------------------------------------------------------------------------
@@ -138,12 +138,24 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
+            'text'        => 'Posts',
+            'url'         => '/posts',
             'icon'        => 'far fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+           
+        ],
+        [
+            'text'        => 'Post Category',
+            'url'         => '/postCategories',
+            'icon'        => 'fa fa-clone',
+           
+        ],
+        [
+            'text'        => 'Comments',
+            'url'         => '/comments',
+            'icon'        => 'fa fa-comments',
+          
         ],
         ['header' => 'account_settings'],
         [

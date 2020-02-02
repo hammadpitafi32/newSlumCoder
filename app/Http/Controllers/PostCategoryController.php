@@ -14,10 +14,12 @@ class PostCategoryController extends AppBaseController
 {
     /** @var  PostCategoryRepository */
     private $postCategoryRepository;
+    private $data;
 
     public function __construct(PostCategoryRepository $postCategoryRepo)
     {
         $this->postCategoryRepository = $postCategoryRepo;
+        $this->data['module']='Post Catgory';
     }
 
     /**
@@ -32,7 +34,7 @@ class PostCategoryController extends AppBaseController
         $postCategories = $this->postCategoryRepository->all();
 
         return view('post_categories.index')
-            ->with('postCategories', $postCategories);
+        ->with('postCategories', $postCategories);
     }
 
     /**
@@ -41,7 +43,7 @@ class PostCategoryController extends AppBaseController
      * @return Response
      */
     public function create()
-    {
+    {   
         return view('post_categories.create');
     }
 
@@ -55,6 +57,15 @@ class PostCategoryController extends AppBaseController
     public function store(CreatePostCategoryRequest $request)
     {
         $input = $request->all();
+        
+        if($request->hasfile('image_url')) 
+        { 
+          $file = $request->file('image_url');
+          $extension = $file->getClientOriginalExtension(); // getting image extension
+          $filename ='slumcoder-'.$request->category.'-'.time().'.'.$extension;
+          $file->move('uploads/catgory/', $filename);
+        }
+        $input['image_url']=$filename;
 
         $postCategory = $this->postCategoryRepository->create($input);
 
@@ -120,8 +131,18 @@ class PostCategoryController extends AppBaseController
 
             return redirect(route('postCategories.index'));
         }
+        $input=$request->all();
+        
+        if($request->hasfile('image_url')) 
+        { 
+          $file = $request->file('image_url');
+          $extension = $file->getClientOriginalExtension(); // getting image extension
+          $filename ='slumcoder-'.$request->category.'-'.time().'.'.$extension;
+          $file->move('uploads/catgory/', $filename);
+          $input['image_url']=$filename;
+        }
 
-        $postCategory = $this->postCategoryRepository->update($request->all(), $id);
+        $postCategory = $this->postCategoryRepository->update($input, $id);
 
         Flash::success('Post Category updated successfully.');
 

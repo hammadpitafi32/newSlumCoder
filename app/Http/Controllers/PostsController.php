@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePostsRequest;
 use App\Repositories\PostsRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\PostCategory;
 use Flash;
 use Response;
 
@@ -14,10 +15,13 @@ class PostsController extends AppBaseController
 {
     /** @var  PostsRepository */
     private $postsRepository;
+    private $data;
 
     public function __construct(PostsRepository $postsRepo)
     {
         $this->postsRepository = $postsRepo;
+        $this->data['module']='post';
+        $this->data['status']=[0=>'Disable',1=>'Active'];
     }
 
     /**
@@ -42,7 +46,10 @@ class PostsController extends AppBaseController
      */
     public function create()
     {
-        return view('posts.create');
+        $category=PostCategory::pluck('category','id');
+ 
+        $this->data['category']=$category;
+        return view('posts.create',$this->data);
     }
 
     /**
@@ -55,7 +62,11 @@ class PostsController extends AppBaseController
     public function store(CreatePostsRequest $request)
     {
         $input = $request->all();
-
+        $input['user_id']=auth()->user()->id;
+    
+        // echo "<pre>";
+        // print_r($input);
+        // die();
         $posts = $this->postsRepository->create($input);
 
         Flash::success('Posts saved successfully.');
@@ -99,8 +110,11 @@ class PostsController extends AppBaseController
 
             return redirect(route('posts.index'));
         }
+        $category=PostCategory::pluck('category','id');
+ 
+        $this->data['category']=$category;
 
-        return view('posts.edit')->with('posts', $posts);
+        return view('posts.edit',$this->data)->with('posts', $posts);
     }
 
     /**
@@ -120,8 +134,9 @@ class PostsController extends AppBaseController
 
             return redirect(route('posts.index'));
         }
-
-        $posts = $this->postsRepository->update($request->all(), $id);
+        $inputs=$request->all();
+        $inputs['user_id']=auth()->user()->id;
+        $posts = $this->postsRepository->update($inputs, $id);
 
         Flash::success('Posts updated successfully.');
 
