@@ -12,7 +12,7 @@
             <tr>
                 <td>    @if(isset($postCategory->image_url) && !empty($postCategory->image_url))
 
-                    <img width="50"  src="{{asset('uploads/catgory/')}}/{{$postCategory->image_url}}" width="50">
+                    <img  src="{{asset('uploads/catgory/')}}/{{$postCategory->image_url}}" width="50">
                     @else
                     <img src="/themeImages/noimage.png" width="50">
                 @endif</td>

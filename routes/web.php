@@ -14,9 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::group(['namespace' => 'front','middleware'=>'front'], function () {
 
     Route::get('/articles', 'HomeController@index')->name('.articles');
+    Route::get('/article/{id}', 'HomeController@article')->name('article');
 
 });
 // Route::get('/articles', 'HomeController@index')->name('articles');

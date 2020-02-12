@@ -1,4 +1,4 @@
-	    			<div class="col-xl-4 sidebar ftco-animate bg-light pt-5">
+	    			<div class="col-md-12">
 	    				<div class="sidebar-box pt-md-4">
 	    					<form action="#" class="search-form">
 	    						<div class="form-group">
@@ -94,8 +94,8 @@
 	    				</div>
 
 
-	    				<div class="sidebar-box ftco-animate">
+	    		<!-- 		<div class="sidebar-box ftco-animate">
 	    					<h3 class="sidebar-heading">Paragraph</h3>
 	    					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut.</p>
-	    				</div>
+	    				</div> -->
 	          </div><!-- END COL -->

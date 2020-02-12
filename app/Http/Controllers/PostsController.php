@@ -63,10 +63,7 @@ class PostsController extends AppBaseController
     {
         $input = $request->all();
         $input['user_id']=auth()->user()->id;
-    
-        // echo "<pre>";
-        // print_r($input);
-        // die();
+
         $posts = $this->postsRepository->create($input);
 
         Flash::success('Posts saved successfully.');
@@ -168,4 +165,5 @@ class PostsController extends AppBaseController
 
         return redirect(route('posts.index'));
     }
+
 }

@@ -31,21 +31,32 @@
 </head>
 <body>
 
-	<div id="colorlib-page">
+	<!-- <div id="colorlib-page">
 		@include('layouts.sidebar')
 		<div id="colorlib-main">
-			<section class="ftco-section ftco-no-pt ftco-no-pb">
-				<div class="container">
-					<div class="row d-flex">
-						@yield('content')
+			<section class="ftco-section ftco-no-pt ftco-no-pb"> -->
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-3">
+							@include('layouts.sidebar')
+						</div>
+						<div class="col-md-6">
+							@yield('content')
+						</div>
+						<div class="col-md-3">
+							@include('layouts.rightbar')
+						</div>
+						
 					<!-- yield content -->
-						@include('layouts.rightbar')
+						
 						<!-- right bar -->
 					</div>
 				</div>
-			</section>
-		</div><!-- END COLORLIB-MAIN -->
-	</div><!-- END COLORLIB-PAGE -->
+	<!-- 		</section>
+		</div>
+		
+	</div> -->
+	<!-- END COLORLIB-PAGE -->
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -69,3 +80,13 @@
 
 </body>
 </html>
+<script type="text/javascript">
+	setImageWidth();
+    function setImageWidth() {
+		
+		$('p').children('img').map(function () {
+			return $(this).css('width','100%')
+		}).get()
+	}
+
+</script>
