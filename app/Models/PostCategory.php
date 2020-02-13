@@ -47,5 +47,10 @@ class PostCategory extends Model
         // 'image_url'=> 'required',
     ];
 
+    public function posts()
+    {
+        return $this->hasMany(Posts::class,'category_id','id');
+    }
+
     
 }

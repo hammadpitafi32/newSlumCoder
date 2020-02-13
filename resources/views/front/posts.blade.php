@@ -9,14 +9,14 @@
 		text-overflow: ellipsis;
 	}
 </style>
-<div class="col-xl-8 py-5 px-md-5">
+<div class="col-xl-12 py-12 px-md-12">
 	<div class="row pt-md-4">
 		@if($posts->count()>0)
 		@foreach($posts as $post)
 
 		<div class="col-md-12">
 			<div class="blog-entry ftco-animate d-md-flex">
-				<a href="single.html" class="img img-2" style="background-image: url('{{asset('uploads/catgory/')}}/{{$post->category->image_url}}');"></a>
+				<a href="{{route('article',[$post->id])}}" class="img img-2" style="background-image: url('{{asset('uploads/catgory/')}}/{{$post->category->image_url}}');"></a>
 				<div class="text text-2 pl-md-4">
 					<h3 class="mb-2"><a href="{{route('article',[$post->id])}}">{{$post->title}}</a></h3>
 					<div class="meta-wrap">

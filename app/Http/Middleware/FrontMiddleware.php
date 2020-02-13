@@ -18,7 +18,8 @@ class FrontMiddleware
     public function handle($request, Closure $next)
     {   
 
-        $cat=PostCategory::all();
+        $cat=PostCategory::with('posts')->get();
+       
         View::share('category',$cat);
         return $next($request);
     }

@@ -6,18 +6,26 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\PostsRepository;
 use App\Models\PostCategory;
+use App\Models\Posts;
+use View;
 
 class HomeController extends Controller
 {
     /** @var  PostsRepository */
     private $postsRepository;
     private $data;
+    private $postsMod;
 
-    public function __construct(PostsRepository $postsRepo)
+    public function __construct(PostsRepository $postsRepo,Posts $postsModel)
     {
         $this->postsRepository = $postsRepo;
         $this->data['module']='post';
         $this->data['status']=[0=>'Disable',1=>'Active'];
+        $this->postsMod = $postsModel;
+        
+        $popArticles=$this->postsMod->popArticle();
+
+        View::share('popArticles',$popArticles);
     }
     /**
      * Display a listing of the Comments.
@@ -51,10 +59,16 @@ class HomeController extends Controller
         $post->load('user');
         $post->load('comments.user');
 
-        // echo "<pre>";
-        // print_r($post->toarray());
-        // die();
-    
         return view('front.single-article')->with('post', $post);
+    }
+    public function getArticleByCategory($slug){
+        $this->data['posts']=$this->postsRepository->getArticleByCategory($slug);
+       
+        return view('front.posts',$this->data);
+    }
+    public function getArticleByDate($slug){
+        $this->data['posts']=$this->postsRepository->getArticleByDate($slug);
+       
+        return view('front.posts',$this->data);
     }
 }

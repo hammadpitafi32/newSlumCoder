@@ -76,5 +76,10 @@ class Posts extends Model
         return $this->hasMany(Comments::class,'post_id','id');
     }
 
+    public function popArticle()
+    {
+        return self::orderBy('id','desc')->take(5)->get();
+    }
+
     
 }

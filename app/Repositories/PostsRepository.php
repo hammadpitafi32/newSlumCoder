@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Posts;
+use App\Models\PostCategory;
 use App\Repositories\BaseRepository;
 
 /**
@@ -38,6 +39,21 @@ class PostsRepository extends BaseRepository
     public function model()
     {
         return Posts::class;
+    }
+    public function getArticleByCategory($slug){
+        $catId=PostCategory::where('category',$slug)->first();
+        
+        if(!empty($catId)){
+
+            return $this->model->where('category_id',$catId->id)->Active()->get();
+        }
+        return new \stdClass();
+    }
+    public function getArticleByDate($slug){
+        $empl=explode('-', $slug);
+     
+        return $this->model->whereMonth('created_at',$empl[0])->whereYear('created_at',$empl[1])->Active()->get();
+        
     }
     
 }

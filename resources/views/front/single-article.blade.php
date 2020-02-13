@@ -54,9 +54,9 @@
 									
 								<!-- END comment-list -->
 
-								<div class="comment-form-wrap pt-5">
-									<h3 class="mb-5">Leave a comment</h3>
-									<form action="#" class="p-3 p-md-5 bg-light">
+								<div class="row d-flex">
+									<h3 class="col-md-12">Leave a comment</h3>
+									<form action="#" class="col-md-12 bg-light">
 										<div class="form-group">
 											<label for="name">Name *</label>
 											<input type="text" class="form-control" id="name">
@@ -65,11 +65,7 @@
 											<label for="email">Email *</label>
 											<input type="email" class="form-control" id="email">
 										</div>
-										<div class="form-group">
-											<label for="website">Website</label>
-											<input type="url" class="form-control" id="website">
-										</div>
-
+										
 										<div class="form-group">
 											<label for="message">Message</label>
 											<textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>

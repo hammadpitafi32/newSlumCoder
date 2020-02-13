@@ -19,6 +19,8 @@ Route::group(['namespace' => 'front','middleware'=>'front'], function () {
 
     Route::get('/articles', 'HomeController@index')->name('.articles');
     Route::get('/article/{id}', 'HomeController@article')->name('article');
+    Route::get('/articles/{slug}', 'HomeController@getArticleByCategory')->name('articlesByCategory');
+    Route::get('/articles/date/{slug}', 'HomeController@getArticleByDate')->name('getArticleByDate');
 
 });
 // Route::get('/articles', 'HomeController@index')->name('articles');

@@ -12,7 +12,7 @@
 	    					<ul class="categories">
 	    						@if($category->count()>0)
 	    						@foreach($category as $cat)
-	    						<li><a href="#">{{$cat->category}}<span>(6)</span></a></li>
+	    						<li><a href="{{route('articlesByCategory',['slug'=>$cat->category])}}">{{$cat->category}}<span>({{$cat->posts->count()}})</span></a></li>
 	    						@endforeach
 	    						@endif
 	    					</ul>
@@ -20,42 +20,26 @@
 
 	    				<div class="sidebar-box ftco-animate">
 	    					<h3 class="sidebar-heading">Popular Articles</h3>
+	    					@if($popArticles->count()>0)
+	    					@foreach($popArticles as $post)
 	    					<div class="block-21 mb-4 d-flex">
-	    						<a class="blog-img mr-4" style="background-image: url('{{asset('themeImages/image_1.jpg')}}');"></a>
+	    						<a class="blog-img mr-4" style="background-image: url('{{asset('uploads/catgory/')}}/{{$post->category->image_url}}');"></a>
 	    						<div class="text">
-	    							<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control</a></h3>
+	    							<h3 class="heading"><a href="{{route('article',[$post->id])}}">{{$post->title}}</a></h3>
 	    							<div class="meta">
-	    								<div><a href="#"><span class="icon-calendar"></span> June 28, 2019</a></div>
-	    								<div><a href="#"><span class="icon-person"></span> Dave Lewis</a></div>
-	    								<div><a href="#"><span class="icon-chat"></span> 19</a></div>
+	    								<div><a href="{{route('article',[$post->id])}}"><span class="icon-calendar"></span> {{ \Carbon\Carbon::parse($post->created_at)->format('j F, Y')}}</a></div>
+	    								<div><a href="{{route('article',[$post->id])}}"><span class="icon-person"></span> {{$post->user->name}}</a></div>
+	    								<div><a href="{{route('article',[$post->id])}}"><span class="icon-chat"></span> {{$post->comments->count()}}</a></div>
 	    							</div>
 	    						</div>
 	    					</div>
-	    					<div class="block-21 mb-4 d-flex">
-	    						<a class="blog-img mr-4" style="background-image: url('{{asset('themeImages/image_2.jpg')}}');"></a>
-	    						<div class="text">
-	    							<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control</a></h3>
-	    							<div class="meta">
-	    								<div><a href="#"><span class="icon-calendar"></span> June 28, 2019</a></div>
-	    								<div><a href="#"><span class="icon-person"></span> Dave Lewis</a></div>
-	    								<div><a href="#"><span class="icon-chat"></span> 19</a></div>
-	    							</div>
-	    						</div>
-	    					</div>
-	    					<div class="block-21 mb-4 d-flex">
-	    						<a class="blog-img mr-4" style="background-image: url('{{asset('themeImages/image_3.jpg')}}');"></a>
-	    						<div class="text">
-	    							<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control</a></h3>
-	    							<div class="meta">
-	    								<div><a href="#"><span class="icon-calendar"></span> June 28, 2019</a></div>
-	    								<div><a href="#"><span class="icon-person"></span> Dave Lewis</a></div>
-	    								<div><a href="#"><span class="icon-chat"></span> 19</a></div>
-	    							</div>
-	    						</div>
-	    					</div>
+	    					@endforeach
+	    					@endif
+	    					
+	    					
 	    				</div>
 
-	    				<div class="sidebar-box ftco-animate">
+	    				<!-- <div class="sidebar-box ftco-animate">
 	    					<h3 class="sidebar-heading">Tag Cloud</h3>
 	    					<ul class="tagcloud">
 	    						<a href="#" class="tag-cloud-link">animals</a>
@@ -67,12 +51,12 @@
 	    						<a href="#" class="tag-cloud-link">leaves</a>
 	    						<a href="#" class="tag-cloud-link">food</a>
 	    					</ul>
-	    				</div>
+	    				</div> -->
 
 	    				<div class="sidebar-box subs-wrap img py-4" style="background-image: url('{{asset('themeImages/bg_1.jpg')}}');">
 	    					<div class="overlay"></div>
 	    					<h3 class="mb-4 sidebar-heading">Newsletter</h3>
-	    					<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia</p>
+	    					<p class="mb-4">Please enter your email for subscription and get daily news.</p>
 	    					<form action="#" class="subscribe-form">
 	    						<div class="form-group">
 	    							<input type="text" class="form-control" placeholder="Email Address">
@@ -84,12 +68,13 @@
 	    				<div class="sidebar-box ftco-animate">
 	    					<h3 class="sidebar-heading">Archives</h3>
 	    					<ul class="categories">
-	    						<li><a href="#">Decob14 2018 <span>(10)</span></a></li>
-	    						<li><a href="#">September 2018 <span>(6)</span></a></li>
-	    						<li><a href="#">August 2018 <span>(8)</span></a></li>
-	    						<li><a href="#">July 2018 <span>(2)</span></a></li>
-	    						<li><a href="#">June 2018 <span>(7)</span></a></li>
-	    						<li><a href="#">May 2018 <span>(5)</span></a></li>
+	    						@for($i = -3; $i <= 0; $i++)
+  									<?php $date= date('M-Y', strtotime("$i month"));
+  										$date2= date('m-Y', strtotime("$i month"));
+  									?>
+  									<li><a href="{{route('getArticleByDate',['date'=> $date2])}}">{{$date}}</a></li>
+								@endfor
+	    					
 	    					</ul>
 	    				</div>
 
