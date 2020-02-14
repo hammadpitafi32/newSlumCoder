@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -17,6 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Posts extends Model
 {
     use SoftDeletes;
+    use Searchable;
 
     public $table = 'posts';
     
@@ -75,11 +77,18 @@ class Posts extends Model
     {
         return $this->hasMany(Comments::class,'post_id','id');
     }
+    public function tags()
+    {
+        return $this->hasMany(PostTags::class,'post_id','id');
+    }
 
     public function popArticle()
     {
         return self::orderBy('id','desc')->take(5)->get();
     }
-
+    public function searchableAs()
+    {
+        return 'title';
+    }
     
 }

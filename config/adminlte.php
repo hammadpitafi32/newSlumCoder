@@ -146,6 +146,18 @@ return [
            
         ],
         [
+            'text'        => 'Tags',
+            'url'         => '/tags',
+            'icon'        => 'fas fa-tags',
+           
+        ],
+        [
+            'text'        => 'Post Tags',
+            'url'         => '/postTags',
+            'icon'        => 'fas fa-user-tag',
+           
+        ],
+        [
             'text'        => 'Post Category',
             'url'         => '/postCategories',
             'icon'        => 'fa fa-clone',

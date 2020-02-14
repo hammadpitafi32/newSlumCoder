@@ -1,9 +1,9 @@
 	    			<div class="col-md-12">
 	    				<div class="sidebar-box pt-md-4">
-	    					<form action="#" class="search-form">
+	    					<form  id="analogiaScout" action="{{route('search')}}" method="get" class="search-form">
 	    						<div class="form-group">
 	    							<span class="icon icon-search"></span>
-	    							<input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+	    							<input type="text" name="search" class="form-control" placeholder="Type a keyword and hit enter">
 	    						</div>
 	    					</form>
 	    				</div>

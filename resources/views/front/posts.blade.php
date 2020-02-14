@@ -26,11 +26,8 @@
 							<span><i class="icon-comment2 mr-2"></i>{{$post->comments->count()}} Comment</span>
 						</p>
 					</div>
-					<div class="truncate">
-						
+					<div class="truncate">						
 							{!! preg_replace("/<img[^>]+\>/i", "", $post->content) !!}
-						
-						
 					</div>
 					
 					<p><a href="#" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
@@ -38,11 +35,15 @@
 			</div>
 		</div>
 		@endforeach
+        @else
+        <div class="col-md-12 alert alert-warning">
+            <strong>Sorry!</strong> Not a single post is found.
+        </div>
 		@endif
 		<!-- June 28, 2019 -->
 
 	</div><!-- END-->
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col">
 			<div class="block-27">
 				<ul>
@@ -56,6 +57,6 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 @endsection

@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Posts;
+use App\Models\Tags;
+use App\Models\PostTags;
 use App\Models\PostCategory;
 use App\Repositories\BaseRepository;
 
@@ -53,6 +55,18 @@ class PostsRepository extends BaseRepository
         $empl=explode('-', $slug);
      
         return $this->model->whereMonth('created_at',$empl[0])->whereYear('created_at',$empl[1])->Active()->get();
+        
+    }
+
+    public function getPostsByTags($slug){
+        $tag=Tags::where('tag',$slug)->first();
+        
+        if(!empty($tag)){
+            
+            $getTagPosts=PostTags::where('tag_id',$tag->id)->pluck('post_id');
+            return $this->model->whereIn('id',$getTagPosts)->Active()->get();
+        }
+        return new \stdClass();
         
     }
     

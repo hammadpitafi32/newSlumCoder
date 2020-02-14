@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\PostsRepository;
 use App\Models\PostCategory;
+use App\Models\Comments;
 use App\Models\Posts;
 use View;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -56,6 +58,7 @@ class HomeController extends Controller
             return redirect()->back();
         }
         
+        $post->load('tags.tag');
         $post->load('user');
         $post->load('comments.user');
 
@@ -71,4 +74,36 @@ class HomeController extends Controller
        
         return view('front.posts',$this->data);
     }
+    public function getPostsByTags($slug){
+        
+        $this->data['posts']=$this->postsRepository->getPostsByTags($slug);
+        return view('front.posts',$this->data);
+    }
+    public function postComment(Request $request){
+        
+        if(Auth::check()){
+
+            $userId=auth()->user()->id;
+            $postId=$request->post;
+            $comment=$request->comment;
+            $data=['post_id'=>$postId,'user_id'=>$userId,'message'=>$comment];
+          
+            $saveComments=Comments::create($data);
+            if($saveComments){
+                return redirect()->back()->with('success','Comment posted successfully.');
+            }
+            return redirect()->back()->with('error','Some thing went wrong.');
+        }
+        return redirect()->back()->with('error','Please Login first.');
+    }
+    
+    public function search(Request $request){
+        
+        if($request->has('search')){
+          
+          $posts = Posts::search($request->input('search'))->get();
+        }
+        return view('front.search', compact('posts'));
+    }
+    
 }
