@@ -8,6 +8,7 @@ use App\Repositories\PostsRepository;
 use App\Models\PostCategory;
 use App\Models\Comments;
 use App\Models\Posts;
+use App\Models\NewsLetter;
 use View;
 use Auth;
 
@@ -106,4 +107,17 @@ class HomeController extends Controller
         return view('front.search', compact('posts'));
     }
     
+    public function subscribe(Request $request){
+       
+        if($request->has('email')){
+     
+          $email = NewsLetter::create(['email'=>$request->email]);
+          if($email){
+             return redirect()->route('.articles')->with('success','Email Save Successfully');
+          }
+           return redirect()->back()->with('error','Email already Saved.');
+        }
+        
+        return redirect()->route('.articles')->with('success','Email Save Successfully');
+    }
 }

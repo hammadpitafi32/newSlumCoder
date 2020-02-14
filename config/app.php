@@ -182,6 +182,7 @@ return [
         \InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
         \InfyOm\AdminLTETemplates\AdminLTETemplatesServiceProvider::class, 
         Spatie\Permission\PermissionServiceProvider::class,
+        Riverskies\LaravelNewsletterSubscription\Providers\NewsletterSubscriptionServiceProvider::class,
 
     ],
 

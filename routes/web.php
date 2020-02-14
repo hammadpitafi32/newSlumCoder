@@ -24,6 +24,7 @@ Route::group(['namespace' => 'front','middleware'=>'front'], function () {
     Route::get('/articles/tag/{slug}', 'HomeController@getPostsByTags')->name('getPostsByTags');
     Route::post('/post/comment', 'HomeController@postComment')->name('postcomment');
     Route::get('/SearchQuery', 'HomeController@search')->name('search');
+    Route::post('/subscribe', 'HomeController@subscribe')->name('subscribe');
 
 });
 

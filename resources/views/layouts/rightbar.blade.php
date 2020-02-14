@@ -43,13 +43,7 @@
 	    					<h3 class="sidebar-heading">Tag Cloud</h3>
 	    					<ul class="tagcloud">
 	    						<a href="#" class="tag-cloud-link">animals</a>
-	    						<a href="#" class="tag-cloud-link">human</a>
-	    						<a href="#" class="tag-cloud-link">people</a>
-	    						<a href="#" class="tag-cloud-link">cat</a>
-	    						<a href="#" class="tag-cloud-link">dog</a>
-	    						<a href="#" class="tag-cloud-link">nature</a>
-	    						<a href="#" class="tag-cloud-link">leaves</a>
-	    						<a href="#" class="tag-cloud-link">food</a>
+	    						
 	    					</ul>
 	    				</div> -->
 
@@ -57,9 +51,10 @@
 	    					<div class="overlay"></div>
 	    					<h3 class="mb-4 sidebar-heading">Newsletter</h3>
 	    					<p class="mb-4">Please enter your email for subscription and get daily news.</p>
-	    					<form action="#" class="subscribe-form">
+	    					<form action="{{route('subscribe')}}" method="POST" class="subscribe-form">
+                                {{ csrf_field() }}
 	    						<div class="form-group">
-	    							<input type="text" class="form-control" placeholder="Email Address">
+	    							<input type="text" class="form-control" name="email" placeholder="Email Address">
 	    							<input type="submit" value="Subscribe" class="mt-2 btn btn-white submit">
 	    						</div>
 	    					</form>
@@ -78,9 +73,4 @@
 	    					</ul>
 	    				</div>
 
-
-	    		<!-- 		<div class="sidebar-box ftco-animate">
-	    					<h3 class="sidebar-heading">Paragraph</h3>
-	    					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut.</p>
-	    				</div> -->
 	          </div><!-- END COL -->
