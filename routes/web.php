@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'front','middleware'=>'front'], function () {
 
+	Route::get('/signin', 'HomeController@signin')->name('signin');
+	Route::get('/usersignup', 'HomeController@signup')->name('userSignup');
     Route::get('/articles', 'HomeController@index')->name('.articles');
     Route::get('/article/{id}', 'HomeController@article')->name('article');
     Route::get('/articles/{slug}', 'HomeController@getArticleByCategory')->name('articlesByCategory');
@@ -25,6 +27,9 @@ Route::group(['namespace' => 'front','middleware'=>'front'], function () {
     Route::post('/post/comment', 'HomeController@postComment')->name('postcomment');
     Route::get('/SearchQuery', 'HomeController@search')->name('search');
     Route::post('/subscribe', 'HomeController@subscribe')->name('subscribe');
+    Route::post('/userRegister', 'HomeController@register')->name('.userRegister');
+    Route::get('/logout', 'HomeController@logout')->name('Logout');
+    Route::post('/userlogin', 'HomeController@login')->name('.userlogin');
 
 });
 

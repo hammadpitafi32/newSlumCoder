@@ -8,9 +8,12 @@ use App\Repositories\PostsRepository;
 use App\Models\PostCategory;
 use App\Models\Comments;
 use App\Models\Posts;
+use App\Models\User;
 use App\Models\NewsLetter;
+use Validator;
 use View;
 use Auth;
+use Hash;
 
 class HomeController extends Controller
 {
@@ -108,10 +111,19 @@ class HomeController extends Controller
     }
     
     public function subscribe(Request $request){
-       
+
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:newsletter_subscriptions'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+            
+        }
+
         if($request->has('email')){
      
           $email = NewsLetter::create(['email'=>$request->email]);
+
           if($email){
              return redirect()->route('.articles')->with('success','Email Save Successfully');
           }
@@ -120,4 +132,63 @@ class HomeController extends Controller
         
         return redirect()->route('.articles')->with('success','Email Save Successfully');
     }
+    public function signin(){
+         return view('front.login');
+    }
+    public function signup(){
+         return view('front.signup');
+    }
+    public function register(Request $request){
+        
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
+            're_password' => 'required_with:password|same:password'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+            
+        }
+
+        $inputs=$request->all();
+        unset($inputs['_token']);
+        unset($inputs['re_password']);
+        $inputs['password']=Hash::make($inputs['password']);
+        $saveUser=User::create($inputs);
+
+        if($saveUser){
+            $credentials = $request->only('email', 'password');
+            if (Auth::attempt($credentials)) {
+                return redirect()->route('.articles')->with('success','Register successfully,Thanks');
+            }
+        }
+        return redirect()->back()->with('errors',['some thing went wrong!']);
+    }
+    public function login(Request $request){
+        
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+            
+        }
+        
+        $credentials = $request->only('email', 'password');
+        
+        if(Auth::attempt($credentials)) {
+            return redirect()->route('.articles')->with('success','Login successfully,Thanks');
+        }
+        return redirect()->back()->with('errors',['some thing went wrong!']);
+
+    }
+    public function logout(){
+        Auth::logout();
+        return redirect()->back()->with('success','Logout Successfully.');
+    }
+    
 }

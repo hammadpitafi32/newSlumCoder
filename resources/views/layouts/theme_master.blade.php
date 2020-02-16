@@ -31,31 +31,31 @@
 </head>
 <body>
 
-	<!-- <div id="colorlib-page">
-		@include('layouts.sidebar')
-		<div id="colorlib-main">
-			<section class="ftco-section ftco-no-pt ftco-no-pb"> -->
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-3">
-							@include('layouts.sidebar')
-						</div>
-						<div class="col-md-6">
-							@yield('content')
-						</div>
-						<div class="col-md-3">
-							@include('layouts.rightbar')
-						</div>
-						
-					<!-- yield content -->
-						
-						<!-- right bar -->
-					</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3">
+				@include('layouts.sidebar')
+			</div>
+			<div class="col-md-6">
+				@if ($errors->any())
+				<div class="alert alert-danger">
+					<ul>
+						@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+						@endforeach
+					</ul>
 				</div>
-	<!-- 		</section>
+				@endif
+				@yield('content')
+			</div>
+			<div class="col-md-3">
+				@include('layouts.rightbar')
+			</div>
+			
+
 		</div>
-		
-	</div> -->
+	</div>
+
 	<!-- END COLORLIB-PAGE -->
 
 	<!-- loader -->
@@ -82,11 +82,31 @@
 </html>
 <script type="text/javascript">
 	setImageWidth();
-    function setImageWidth() {
+	function setImageWidth() {
 		
 		$('p').children('img').map(function () {
 			return $(this).css('width','100%')
 		}).get()
 	}
+
+	jQuery( document ).ready( function( $ ) {
+
+		$('.icon-paper-plane' ).on( 'click', function(e) {
+			e.preventDefault();
+
+			var email = $('input[name=email]').val();
+			
+			$.ajax({
+				type: "POST",
+				data: {email:email, _token: $('meta[name="csrf-token"]').attr('content')},
+				url: "{{route('subscribe')}}",
+				success: function( msg ) {
+					window.location.href = "{{route('.articles')}}";
+				}
+
+			});
+
+		});
+	});
 
 </script>
