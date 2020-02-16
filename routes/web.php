@@ -30,6 +30,9 @@ Route::group(['namespace' => 'front','middleware'=>'front'], function () {
     Route::post('/userRegister', 'HomeController@register')->name('.userRegister');
     Route::get('/logout', 'HomeController@logout')->name('Logout');
     Route::post('/userlogin', 'HomeController@login')->name('.userlogin');
+    Route::get('/about', 'HomeController@about')->name('about');
+    Route::get('/contact', 'HomeController@contact')->name('contact');
+    Route::post('/postcontact', 'HomeController@contactMe')->name('contactme');
 
 });
 
@@ -46,3 +49,5 @@ Route::resource('comments', 'CommentsController');
 Route::resource('tags', 'TagsController');
 
 Route::resource('postTags', 'PostTagsController');
+
+Route::resource('contactMes', 'ContactMeController');

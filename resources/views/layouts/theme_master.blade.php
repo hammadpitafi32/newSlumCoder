@@ -29,6 +29,15 @@
 	<link rel="stylesheet" href="{{asset('themeCss/icomoon.css')}}">
 	<link rel="stylesheet" href="{{asset('themeCss/style.css')}}">
 </head>
+<style type="text/css">
+	#colorlib-main{
+		width: 100% !important;
+		margin-top: 5%;
+	}
+	#colorlib-aside{
+		padding-top: 2em !important;
+	}
+</style>
 <body>
 
 	<div class="container-fluid">
@@ -36,7 +45,8 @@
 			<div class="col-md-3">
 				@include('layouts.sidebar')
 			</div>
-			<div class="col-md-6">
+			<div class="@if(Route::current()->getName() == 'contact') col-md-9  
+				@else col-md-6 @endif">
 				@if ($errors->any())
 				<div class="alert alert-danger">
 					<ul>
@@ -48,10 +58,14 @@
 				@endif
 				@yield('content')
 			</div>
+			@if(Route::current()->getName() == 'contact') 
+			@else
 			<div class="col-md-3">
 				@include('layouts.rightbar')
 			</div>
+			@endif
 			
+
 
 		</div>
 	</div>
@@ -74,8 +88,8 @@
 	<script src="{{asset('themeJs/aos.js')}}"></script>
 	<script src="{{asset('themeJs/jquery.animateNumber.min.js')}}"></script>
 	<script src="{{asset('themeJs/scrollax.min.js')}}"></script>
-	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-	<!-- <script src="{{asset('themeJs/google-map.js')}}"></script> -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="{{asset('themeJs/google-map.js')}}"></script>
 	<script src="{{asset('themeJs/main.js')}}"></script>
 
 </body>
@@ -95,7 +109,7 @@
 			e.preventDefault();
 
 			var email = $('input[name=email]').val();
-			
+
 			$.ajax({
 				type: "POST",
 				data: {email:email, _token: $('meta[name="csrf-token"]').attr('content')},

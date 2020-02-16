@@ -5,10 +5,12 @@ namespace App\Http\Controllers\front;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\PostsRepository;
+use App\Http\Requests\CreateContactMeRequest;
 use App\Models\PostCategory;
 use App\Models\Comments;
 use App\Models\Posts;
 use App\Models\User;
+use App\Models\ContactMe;
 use App\Models\NewsLetter;
 use Validator;
 use View;
@@ -189,6 +191,26 @@ class HomeController extends Controller
     public function logout(){
         Auth::logout();
         return redirect()->back()->with('success','Logout Successfully.');
+    }
+    public function about(){
+        $author=User::where('id',1)->first();
+        return view('front.about')->with('author', $author);
+    }
+    public function contact(){
+        return view('front.contact');
+    }
+    
+    public function contactMe(CreateContactMeRequest $request){
+        
+        $inputs=$request->all();
+        unset($inputs['_token']);
+        $saveContact=ContactMe::create($inputs);
+        
+        if($saveContact){
+            return redirect()->back()->with('success','Form submitted');
+        }
+        return redirect()->back()->with('errors',['some thing went wrong please try again!']);
+
     }
     
 }

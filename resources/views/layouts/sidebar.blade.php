@@ -3,12 +3,15 @@
 	<nav id="colorlib-main-menu" role="navigation">
 		<ul>
 			@if(!Auth::check())
-			<li><a href="{{route('userSignup')}}">New?</a></li>
+			<li><a href="{{route('userSignup')}}">New User?</a></li>
 			<li><a href="{{route('signin')}}">Login</a></li>
 			@endif
-			<li class="colorlib-active"><a href="{{route('.articles')}}">Home</a></li>
-			<li><a href="{{route('.articles')}}">About</a></li>
-			<li><a href="{{route('.articles')}}">Contact</a></li>
+			<li class="@if(Route::current()->getName() == '.articles') colorlib-active  
+@endif"><a href="{{route('.articles')}}">Home</a></li>
+			<li class="@if(Route::current()->getName() == 'about') colorlib-active  
+@endif"><a href="{{route('about')}}">About</a></li>
+			<li class="@if(Route::current()->getName() == 'contact') colorlib-active  
+@endif"><a href="{{route('contact')}}">Contact</a></li>
 			@if(Auth::check())
 			<li><a href="{{route('Logout')}}">Logout</a></li>
 			@endif
