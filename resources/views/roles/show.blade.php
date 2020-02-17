@@ -3,15 +3,15 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Contact Me
+        Roles
     </h1>
 </section>
 <div class="content">
     <div class="box box-primary">
         <div class="box-body">
             <div class="row" style="padding-left: 20px">
-                @include('contact_mes.show_fields')
-                <a href="{{ route('contactMes.index') }}" class="btn btn-default">Back</a>
+                @include('roles.show_fields')
+                <a href="{{ route('roles.index') }}" class="btn btn-default">Back</a>
             </div>
         </div>
     </div>

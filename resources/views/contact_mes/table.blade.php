@@ -3,19 +3,19 @@
         <thead>
             <tr>
                 <th>Name</th>
-        <th>Email</th>
-        <th>Subject</th>
-        <th>Message</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach($contactMes as $contactMe)
+            @foreach($contactMes as $contactMe)
             <tr>
                 <td>{{ $contactMe->name }}</td>
-            <td>{{ $contactMe->email }}</td>
-            <td>{{ $contactMe->subject }}</td>
-            <td>{{ $contactMe->message }}</td>
+                <td>{{ $contactMe->email }}</td>
+                <td>{{ $contactMe->subject }}</td>
+                <td>{{ $contactMe->message }}</td>
                 <td>
                     {!! Form::open(['route' => ['contactMes.destroy', $contactMe->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
@@ -26,7 +26,7 @@
                     {!! Form::close() !!}
                 </td>
             </tr>
-        @endforeach
+            @endforeach
         </tbody>
     </table>
 </div>

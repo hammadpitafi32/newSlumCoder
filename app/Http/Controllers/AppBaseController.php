@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use InfyOm\Generator\Utils\ResponseUtil;
+use Illuminate\Support\Facades\Storage;
 use Response;
 
 /**
@@ -34,5 +35,17 @@ class AppBaseController extends Controller
             'success' => true,
             'message' => $message
         ], 200);
+    }
+
+
+    public function saveImage($file,$location,$repo){
+
+        $imageAd = $file;
+        $extension = $imageAd->getClientOriginalExtension();
+        $fileName=$imageAd->getFilename().'.'.$extension;
+        Storage::disk($location)->put($fileName, \File::get($imageAd));
+        $url= $repo->imagePath().'/'.$fileName;
+
+        return $url;
     }
 }

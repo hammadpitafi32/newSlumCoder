@@ -51,3 +51,11 @@ Route::resource('tags', 'TagsController');
 Route::resource('postTags', 'PostTagsController');
 
 Route::resource('contactMes', 'ContactMeController');
+
+Route::resource('roles', 'RolesController');
+
+Route::resource('permissions', 'PermissionsController');
+
+Route::resource('users', 'UsersController');
+
+Route::resource('userRoles', 'UserRolesController');
