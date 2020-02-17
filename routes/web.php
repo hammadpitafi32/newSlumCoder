@@ -38,24 +38,28 @@ Route::group(['namespace' => 'front','middleware'=>'front'], function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('posts', 'PostsController');
+Route::group(['middleware' => ['role:super-admin']], function () {
+    
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('postCategories', 'PostCategoryController');
+    Route::resource('posts', 'PostsController');
 
-Route::resource('comments', 'CommentsController');
+    Route::resource('postCategories', 'PostCategoryController');
 
-Route::resource('tags', 'TagsController');
+    Route::resource('comments', 'CommentsController');
 
-Route::resource('postTags', 'PostTagsController');
+    Route::resource('tags', 'TagsController');
 
-Route::resource('contactMes', 'ContactMeController');
+    Route::resource('postTags', 'PostTagsController');
+});
 
-Route::resource('roles', 'RolesController');
+Route::group(['middleware' => ['role:super-admin']], function () {
 
-Route::resource('permissions', 'PermissionsController');
+    Route::resource('users', 'UsersController');
+    Route::resource('roles', 'RolesController');
+    Route::resource('permissions', 'PermissionsController');
+    Route::resource('contactMes', 'ContactMeController');
+    Route::resource('userRoles', 'UserRolesController');
 
-Route::resource('users', 'UsersController');
-
-Route::resource('userRoles', 'UserRolesController');
+});
