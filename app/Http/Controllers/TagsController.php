@@ -9,15 +9,18 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Auth;
 
 class TagsController extends AppBaseController
 {
     /** @var  TagsRepository */
     private $tagsRepository;
+    private $role;
 
     public function __construct(TagsRepository $tagsRepo)
     {
         $this->tagsRepository = $tagsRepo;
+        $this->role = ['super-admin'];
     }
 
     /**
@@ -29,8 +32,12 @@ class TagsController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $tags = $this->tagsRepository->all();
-
+        if(Auth::user()->hasAnyRole($this->role)){
+            $tags = $this->tagsRepository->all();
+        }else{
+             $tags = $this->tagsRepository->getDataByUserId(Auth::user()->id);
+        }
+        
         return view('tags.index')
             ->with('tags', $tags);
     }
@@ -55,7 +62,7 @@ class TagsController extends AppBaseController
     public function store(CreateTagsRequest $request)
     {
         $input = $request->all();
-
+        $input['user_id']=auth()->user()->id;
         $tags = $this->tagsRepository->create($input);
 
         Flash::success('Tags saved successfully.');
@@ -114,14 +121,14 @@ class TagsController extends AppBaseController
     public function update($id, UpdateTagsRequest $request)
     {
         $tags = $this->tagsRepository->find($id);
-
+        $input=$request->all();
         if (empty($tags)) {
             Flash::error('Tags not found');
 
             return redirect(route('tags.index'));
         }
-
-        $tags = $this->tagsRepository->update($request->all(), $id);
+        $input['user_id']=auth()->user()->id;
+        $tags = $this->tagsRepository->update($input, $id);
 
         Flash::success('Tags updated successfully.');
 

@@ -24,7 +24,7 @@ class Tags extends Model
 
 
     public $fillable = [
-        'tag'
+        'tag','user_id'
     ];
 
     /**
@@ -34,6 +34,7 @@ class Tags extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'user_id' => 'integer',
         'tag' => 'string'
     ];
 
@@ -45,6 +46,10 @@ class Tags extends Model
     public static $rules = [
         'tag' => 'required'
     ];
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Users','user_id','id');
+    }
 
     
 }

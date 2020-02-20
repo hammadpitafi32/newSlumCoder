@@ -11,17 +11,20 @@ use App\Models\Posts;
 use App\Models\Tags;
 use Flash;
 use Response;
+use Auth;
 
 class PostTagsController extends AppBaseController
 {
     /** @var  PostTagsRepository */
     private $postTagsRepository;
     private $data;
+    private $role;
 
     public function __construct(PostTagsRepository $postTagsRepo)
     {
         $this->postTagsRepository = $postTagsRepo;
         $this->data = [];
+        $this->role = ['super-admin'];
     }
 
     /**
@@ -33,8 +36,14 @@ class PostTagsController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $postTags = $this->postTagsRepository->all();
 
+        if(Auth::user()->hasAnyRole($this->role)){
+
+            $postTags = $this->postTagsRepository->all();
+        }else{
+            $postTags = $this->postTagsRepository->getDataByUserId(Auth::user()->id);
+        }
+        
         return view('post_tags.index')
             ->with('postTags', $postTags);
     }
@@ -61,7 +70,7 @@ class PostTagsController extends AppBaseController
     public function store(CreatePostTagsRequest $request)
     {
         $input = $request->all();
-
+        $input['user_id']=auth()->user()->id;
         $postTags = $this->postTagsRepository->create($input);
 
         Flash::success('Post Tags saved successfully.');
@@ -122,14 +131,14 @@ class PostTagsController extends AppBaseController
     public function update($id, UpdatePostTagsRequest $request)
     {
         $postTags = $this->postTagsRepository->find($id);
-
+        $input=$request->all();
         if (empty($postTags)) {
             Flash::error('Post Tags not found');
 
             return redirect(route('postTags.index'));
         }
-
-        $postTags = $this->postTagsRepository->update($request->all(), $id);
+        $input['user_id']=auth()->user()->id;
+        $postTags = $this->postTagsRepository->update($input, $id);
 
         Flash::success('Post Tags updated successfully.');
 

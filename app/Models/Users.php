@@ -5,6 +5,9 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 /**
  * Class Users
@@ -19,9 +22,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string image_url
  * @property string remember_token
  */
-class Users extends Model
+class Users extends Authenticatable
 {
-    use SoftDeletes,HasRoles;
+    use SoftDeletes,HasRoles,Notifiable;
 
     public $table = 'users';
     

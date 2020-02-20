@@ -8,6 +8,7 @@ use App\Repositories\PostCategoryRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Auth;
 use Response;
 
 class PostCategoryController extends AppBaseController
@@ -15,11 +16,13 @@ class PostCategoryController extends AppBaseController
     /** @var  PostCategoryRepository */
     private $postCategoryRepository;
     private $data;
+    private $role;
 
     public function __construct(PostCategoryRepository $postCategoryRepo)
     {
         $this->postCategoryRepository = $postCategoryRepo;
         $this->data['module']='Post Catgory';
+        $this->role = ['super-admin'];
     }
 
     /**
@@ -31,8 +34,12 @@ class PostCategoryController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $postCategories = $this->postCategoryRepository->all();
-
+        if(Auth::user()->hasAnyRole($this->role)){
+            $postCategories = $this->postCategoryRepository->all();
+        }
+        else{
+            $postCategories = $this->postCategoryRepository->getDataByUserId(Auth::user()->id);
+        }
         return view('post_categories.index')
         ->with('postCategories', $postCategories);
     }
@@ -66,6 +73,7 @@ class PostCategoryController extends AppBaseController
           $file->move('uploads/catgory/', $filename);
         }
         $input['image_url']=$filename;
+        $input['user_id']=auth()->user()->id;
 
         $postCategory = $this->postCategoryRepository->create($input);
 
@@ -141,7 +149,7 @@ class PostCategoryController extends AppBaseController
           $file->move('uploads/catgory/', $filename);
           $input['image_url']=$filename;
         }
-
+        $input['user_id']=auth()->user()->id;
         $postCategory = $this->postCategoryRepository->update($input, $id);
 
         Flash::success('Post Category updated successfully.');

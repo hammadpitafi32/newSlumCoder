@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th>Image</th>
+                <th>User</th>
                 <th>Category</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -16,6 +17,7 @@
                     @else
                     <img src="/themeImages/noimage.png" width="50">
                 @endif</td>
+                <td>{{ $postCategory->user->name }}</td>
                 <td>{{ $postCategory->category }}</td>
                 <td>
                     {!! Form::open(['route' => ['postCategories.destroy', $postCategory->id], 'method' => 'delete']) !!}

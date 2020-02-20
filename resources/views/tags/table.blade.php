@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th>Tag</th>
+                <th>User</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -10,6 +11,7 @@
         @foreach($tags as $tags)
             <tr>
                 <td>{{ $tags->tag }}</td>
+                <td>{{ $tags->user->name }}</td>
                 <td>
                     {!! Form::open(['route' => ['tags.destroy', $tags->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

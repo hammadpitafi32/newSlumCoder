@@ -2,18 +2,18 @@
     <table class="table" id="comments-table">
         <thead>
             <tr>
-                <th>Post Id</th>
-        <th>User Id</th>
-        <th>Message</th>
+                <th>Post</th>
+                <th>User</th>
+                <th>Message</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach($comments as $comments)
+            @foreach($comments as $comments)
             <tr>
-                <td>{{ $comments->post_id }}</td>
-            <td>{{ $comments->user_id }}</td>
-            <td>{{ $comments->message }}</td>
+                <td>{{ $comments->post->title }}</td>
+                <td>{{ $comments->user->name }}</td>
+                <td>{{ $comments->message }}</td>
                 <td>
                     {!! Form::open(['route' => ['comments.destroy', $comments->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
@@ -24,7 +24,7 @@
                     {!! Form::close() !!}
                 </td>
             </tr>
-        @endforeach
+            @endforeach
         </tbody>
     </table>
 </div>

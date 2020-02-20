@@ -37,4 +37,7 @@ class PostCategoryRepository extends BaseRepository
     {
         return PostCategory::class;
     }
+    public function getDataByUserId($userId){
+        return $this->model->where('user_id',$userId)->get();
+    }  
 }

@@ -24,7 +24,7 @@ class PostCategory extends Model
 
 
     public $fillable = [
-        'category','image_url'
+        'category','image_url','user_id'
     ];
 
     /**
@@ -34,7 +34,8 @@ class PostCategory extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'category' => 'string'
+        'category' => 'string',
+        'user_id'=>'integer'
     ];
 
     /**
@@ -50,6 +51,10 @@ class PostCategory extends Model
     public function posts()
     {
         return $this->hasMany(Posts::class,'category_id','id');
+    }
+    public function user()
+    {
+        return $this->hasOne(Users::class,'id','user_id');
     }
 
     

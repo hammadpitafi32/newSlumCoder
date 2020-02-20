@@ -39,4 +39,7 @@ class CommentsRepository extends BaseRepository
     {
         return Comments::class;
     }
+    public function getDataByUserId($userId){
+        return $this->model->where('user_id',$userId)->get();
+    }   
 }

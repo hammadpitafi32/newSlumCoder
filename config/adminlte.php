@@ -133,16 +133,22 @@ return [
             'search' => true,
         ],
         ['header' => 'main_navigation'],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'profile',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'Users',
-            'url'  => '/users',
-            'icon' => 'fas fa-users',
+            'text' => 'change_password',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
         ],
+       
         
         [
             'text'        => 'Posts',
@@ -174,23 +180,15 @@ return [
             'icon'        => 'fa fa-comments',
           
         ],
-        [
-            'text'        => 'Contact Me',
-            'url'         => '/contactMes',
-            'icon'        => 'fas fa-mail-bulk',
-           
-        ],
+        
         ['header' => 'account_settings'],
+        
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Users',
+            'url'  => '/users',
+            'icon' => 'fas fa-users',
         ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+       
         [
             'text'        => 'Roles',
             'url'         => '/roles',
@@ -201,6 +199,12 @@ return [
             'text'        => 'Permissions',
             'url'         => '/permissions',
             'icon'        => 'fas fa-user-lock',
+           
+        ],
+        [
+            'text'        => 'Contact Us',
+            'url'         => '/contactMes',
+            'icon'        => 'fas fa-mail-bulk',
            
         ],
 

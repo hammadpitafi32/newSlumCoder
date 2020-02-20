@@ -8,16 +8,19 @@ use App\Repositories\CommentsRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Auth;
 use Response;
 
 class CommentsController extends AppBaseController
 {
     /** @var  CommentsRepository */
     private $commentsRepository;
+    private $role;
 
     public function __construct(CommentsRepository $commentsRepo)
     {
         $this->commentsRepository = $commentsRepo;
+        $this->role = ['super-admin'];
     }
 
     /**
@@ -29,8 +32,13 @@ class CommentsController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $comments = $this->commentsRepository->all();
-
+        if(Auth::user()->hasAnyRole($this->role)){
+            
+            $comments = $this->commentsRepository->all();
+        }else{
+            $comments = $this->commentsRepository->getDataByUserId(Auth::user()->id);
+        }
+        
         return view('comments.index')
             ->with('comments', $comments);
     }

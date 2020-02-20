@@ -4,6 +4,10 @@
     <p>{{ $postCategory->category }}</p>
 </div>
 <div class="form-group">
+    {!! Form::label('user', 'User:') !!}
+    <p>{{ $postCategory->user->name }}</p>
+</div>
+<div class="form-group">
     {!! Form::label('image', 'Image:') !!}
     
     @if(!empty($postCategory->image_url))

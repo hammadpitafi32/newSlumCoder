@@ -9,7 +9,7 @@ use App\Http\Requests\CreateContactMeRequest;
 use App\Models\PostCategory;
 use App\Models\Comments;
 use App\Models\Posts;
-use App\Models\User;
+use App\Models\Users;
 use App\Models\ContactMe;
 use App\Models\NewsLetter;
 use Validator;
@@ -158,7 +158,7 @@ class HomeController extends Controller
         unset($inputs['_token']);
         unset($inputs['re_password']);
         $inputs['password']=Hash::make($inputs['password']);
-        $saveUser=User::create($inputs);
+        $saveUser=Users::create($inputs);
 
         if($saveUser){
             $credentials = $request->only('email', 'password');
@@ -193,7 +193,7 @@ class HomeController extends Controller
         return redirect()->back()->with('success','Logout Successfully.');
     }
     public function about(){
-        $author=User::where('id',1)->first();
+        $author=Users::where('id',1)->first();
         return view('front.about')->with('author', $author);
     }
     public function contact(){

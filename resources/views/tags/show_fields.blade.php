@@ -3,6 +3,11 @@
     {!! Form::label('tag', 'Tag:') !!}
     <p>{{ $tags->tag }}</p>
 </div>
+<!-- Tag Field -->
+<div class="form-group">
+    {!! Form::label('user', 'User:') !!}
+    <p>{{ $tags->user->name }}</p>
+</div>
 
 <!-- Created At Field -->
 <div class="form-group">

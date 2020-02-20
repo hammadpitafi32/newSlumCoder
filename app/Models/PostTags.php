@@ -26,7 +26,8 @@ class PostTags extends Model
 
     public $fillable = [
         'tag_id',
-        'post_id'
+        'post_id',
+        'user_id'
     ];
 
     /**
@@ -37,7 +38,8 @@ class PostTags extends Model
     protected $casts = [
         'id' => 'integer',
         'tag_id' => 'integer',
-        'post_id' => 'integer'
+        'post_id' => 'integer',
+        'user_id' => 'integer',
     ];
 
     /**
@@ -56,6 +58,10 @@ class PostTags extends Model
     public function tag()
     {
         return $this->belongsTo('App\Models\Tags','tag_id','id');
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Users','user_id','id');
     }
     
 }
