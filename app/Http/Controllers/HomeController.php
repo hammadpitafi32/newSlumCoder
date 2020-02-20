@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Users;
+use App\Models\Roles;
+
 
 class HomeController extends Controller
 {
@@ -11,9 +14,11 @@ class HomeController extends Controller
      *
      * @return void
      */
+    private $data;
     public function __construct()
     {
         $this->middleware('auth');
+        $this->data=[];
     }
 
     /**
@@ -25,4 +30,26 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function profile(){
+
+        $this->data['mode']='edit';
+        $users = Users::find(auth()->user()->id);
+
+        if (empty($users)) {
+            Flash::error('User not found');
+
+            return redirect(route('users.index'));
+        }
+ 
+        return view('users.show-profile', $this->data)->with('users', $users);
+    }
+
+    public function changePassword(){
+
+        $this->data['mode']='edit';
+      
+        return view('users.change-password', $this->data);
+    }
+
 }

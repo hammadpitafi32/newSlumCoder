@@ -188,5 +188,33 @@ class UsersController extends AppBaseController
 
         return redirect(route('users.index'));
     }
+    public function updateProfile($id, UpdateUsersRequest $request)
+    {
+
+        $users = $this->usersRepository->find($id);
+        $inputs=$request->all();
+        
+        if (empty($users)) {
+            
+            Flash::error('User not found');
+
+            return redirect(route('users.index'));
+        }
+        if ($request->hasFile('image_url')) {
+
+            $url=$this->saveImage($request->file('image_url'),'users',$this->usersRepository);
+            $inputs['image_url']= $url;
+
+        }
+
+        $users = $this->usersRepository->update($inputs, $id);
+
+        Flash::success('User updated successfully.');
+
+        return redirect()->route('home');
+    }
+    public function postChangePassword(){
+        die('dasdassssss');
+    }
 
 }

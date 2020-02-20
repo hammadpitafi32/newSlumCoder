@@ -41,8 +41,11 @@ Route::group(['namespace' => 'front','middleware'=>'front'], function () {
 Route::group(['middleware' => ['role:super-admin|writer']], function () {
     
     Auth::routes();
-    
+
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/profile', 'HomeController@profile')->name('profile');
+    Route::get('/change/password', 'HomeController@changePassword')->name('changepassword');
+    Route::any('post/change/password', 'UsersController@postChangePassword')->name('users.postChangePassword');
 
     Route::resource('posts', 'PostsController');
 
@@ -53,6 +56,8 @@ Route::group(['middleware' => ['role:super-admin|writer']], function () {
     Route::resource('tags', 'TagsController');
 
     Route::resource('postTags', 'PostTagsController');
+    Route::any('users/profile/update/{id}', 'UsersController@updateProfile')->name('users.updateProfile');
+
 });
 
 Route::group(['middleware' => ['role:super-admin']], function () {
