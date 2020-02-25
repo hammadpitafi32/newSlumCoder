@@ -37,11 +37,9 @@ Route::group(['namespace' => 'front','middleware'=>'front'], function () {
 });
 
 
-
+Auth::routes();
 Route::group(['middleware' => ['role:super-admin|writer']], function () {
     
-    Auth::routes();
-
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/profile', 'HomeController@profile')->name('profile');
     Route::get('/change/password', 'HomeController@changePassword')->name('changepassword');
