@@ -11,12 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::group(['namespace' => 'front','middleware'=>'front'], function () {
 
+	Route::get('/', 'HomeController@index');
 	Route::get('/signin', 'HomeController@signin')->name('signin');
 	Route::get('/usersignup', 'HomeController@signup')->name('userSignup');
     Route::get('/articles', 'HomeController@index')->name('.articles');
@@ -65,5 +64,6 @@ Route::group(['middleware' => ['role:super-admin']], function () {
     Route::resource('permissions', 'PermissionsController');
     Route::resource('contactMes', 'ContactMeController');
     Route::resource('userRoles', 'UserRolesController');
+    // Route::get('/telescope', 'HomeController@profile')->name('profile');
 
 });

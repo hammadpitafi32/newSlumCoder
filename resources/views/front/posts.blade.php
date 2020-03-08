@@ -36,7 +36,7 @@
                  {!! preg_replace("/<img[^>]+\>/i", "", $post->content) !!}
              </div>
              
-             <p><a href="#" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
+             <p><a href="{{route('article',[$post->id])}}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
          </div>
      </div>
  </div>

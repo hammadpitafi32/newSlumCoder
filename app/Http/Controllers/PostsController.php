@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\PostCategory;
 use Flash;
 use Response;
+use Auth;
 
 class PostsController extends AppBaseController
 {
@@ -62,6 +63,7 @@ class PostsController extends AppBaseController
     public function store(CreatePostsRequest $request)
     {
         $input = $request->all();
+   
         $input['user_id']=auth()->user()->id;
 
         $posts = $this->postsRepository->create($input);
