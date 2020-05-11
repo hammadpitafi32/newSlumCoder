@@ -31,11 +31,11 @@
                             <span><i class="icon-comment2 mr-2"></i>{{$post->comments->count()}} Comment</span>
                         </p>
                     </div>
-                    <div class="truncate">                      
+                    <!-- <div class="truncate">                      
                         {!! preg_replace("/<img[^>]+\>/i", "", $post->content) !!}
                     </div>
                     
-                    <p><a href="#" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
+                    <p><a href="#" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p> -->
                 </div>
             </div>
         </div>
