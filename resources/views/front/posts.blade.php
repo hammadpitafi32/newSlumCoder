@@ -2,12 +2,14 @@
 
 @section('content')
 <style> 
-	.truncate {
-		width: 400px;
-		white-space: nowrap;
-		overflow: hidden;
+	.truncate p{
 		text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    width: 20em;
 	}
+
 </style>
 <div class="col-xl-12 py-12 px-md-12">
    @if(Session::has('error'))
@@ -32,11 +34,11 @@
                      <span><i class="icon-comment2 mr-2"></i>{{$post->comments->count()}} Comment</span>
                  </p>
              </div>
-             <div class="truncate">						
+            <!--  <div class="truncate">						
                  {!! preg_replace("/<img[^>]+\>/i", "", $post->content) !!}
              </div>
              
-             <p><a href="{{route('article',[$post->id])}}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
+             <p><a href="{{route('article',[$post->id])}}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p> -->
          </div>
      </div>
  </div>

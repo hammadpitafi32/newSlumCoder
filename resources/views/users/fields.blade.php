@@ -19,7 +19,7 @@
 <!-- Roles Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('role', 'Roles:') !!}
-    {!! Form::select('role',$roles,null,['class' => 'form-control']) !!}
+    {!! Form::select('role',$roles,$userRole,['class' => 'form-control']) !!}
 </div>
 
 <!-- Image Url Field -->
@@ -35,12 +35,13 @@
         @endif
     @endif
 </div>
-
+@if($mode!='edit')
 <!-- Pssword Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('password', 'Password:') !!}
     {!! Form::text('password', null, ['class' => 'form-control']) !!}
 </div>
+@endif
 
 
 <!-- Submit Field -->

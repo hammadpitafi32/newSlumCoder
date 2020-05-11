@@ -69,5 +69,8 @@ class PostsRepository extends BaseRepository
         return new \stdClass();
         
     }
+    public function getDataByUserId($userId){
+        return $this->model->where('user_id',$userId)->get();
+    }  
     
 }

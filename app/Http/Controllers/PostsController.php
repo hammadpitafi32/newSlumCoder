@@ -23,6 +23,7 @@ class PostsController extends AppBaseController
         $this->postsRepository = $postsRepo;
         $this->data['module']='post';
         $this->data['status']=[0=>'Disable',1=>'Active'];
+        $this->role = ['super-admin'];
     }
 
     /**
@@ -34,8 +35,13 @@ class PostsController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $posts = $this->postsRepository->all();
+        
+        if(Auth::user()->hasAnyRole($this->role)){
 
+            $posts = $this->postsRepository->all();
+        }else{
+            $posts = $this->postsRepository->getDataByUserId(Auth::user()->id);
+        }
         return view('posts.index')
             ->with('posts', $posts);
     }

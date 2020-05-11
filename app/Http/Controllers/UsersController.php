@@ -48,6 +48,7 @@ class UsersController extends AppBaseController
     {
         $this->data['mode']='create';
         $roles=Roles::pluck('name','name');
+        $this->data['userRole']=null;
         $this->data['roles']=$roles;
         return view('users.create',$this->data);
     }
@@ -125,7 +126,8 @@ class UsersController extends AppBaseController
         $roles=Roles::pluck('name','name');
         
         $this->data['roles']=$roles;
-
+        $this->data['userRole']=$users->getRoleNames();
+    
         return view('users.edit', $this->data)->with('users', $users);
     }
 
@@ -153,7 +155,7 @@ class UsersController extends AppBaseController
             $inputs['image_url']= $url;
 
         }
-        $inputs['password']=Hash::make($inputs['password']);
+        // $inputs['password']=Hash::make($inputs['password']);
         $users = $this->usersRepository->update($inputs, $id);
 
         $users->syncRoles([$request->role]);
