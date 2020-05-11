@@ -30,7 +30,8 @@
 							
 							<div class="about-author d-flex p-4 bg-light">
 								<div class="bio mr-5">
-									<img  src="{{asset('uploads/users/')}}/{{$post->user->image_url}}" width="50">
+									<img src="{{ $post->user->image_url }}" width="50">
+									<!-- <img  src="{{asset('uploads/users/')}}/{{$post->user->image_url}}" width="50"> -->
 								</div>
 								<div class="desc">
 									<h3>{{$post->user->name}}</h3>
