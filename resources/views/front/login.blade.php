@@ -25,10 +25,20 @@
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li style="color: red;">{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
+                @endif
+                @if(Session::has('error'))
+                    <div class="alert alert-danger">
+                        <ul>
+                            
+                            <li style="color: red;">{{ Session::get('error')}}</li>
+                           
+                        </ul>
+                    </div>
+                    
                 @endif
                 <div class="signin-content">
                     <div class="signin-image">

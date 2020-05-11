@@ -185,7 +185,7 @@ class HomeController extends Controller
         if(Auth::attempt($credentials)) {
             return redirect()->route('.articles')->with('success','Login successfully,Thanks');
         }
-        return redirect()->back()->with('errors',['some thing went wrong!']);
+        return redirect()->back()->with('error','Invalid Credentials.');
 
     }
     public function logout(){
