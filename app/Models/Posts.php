@@ -32,7 +32,8 @@ class Posts extends Model
         'content',
         'category_id',
         'status',
-        'title'
+        'title',
+        'slug'
     ];
 
     /**

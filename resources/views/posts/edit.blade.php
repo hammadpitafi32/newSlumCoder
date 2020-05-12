@@ -31,18 +31,14 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-      // $(".summernote").summernote("code", "your text");
+      
       $('#summernote').summernote({
         placeholder: 'Hello',
         height: 400,
         focus: true,
 
       });
-       $("#summernote").summernote('editor.pasteHTML', '{{$posts->content}}');
-      $(document).on('click','#submit',function(){
-        var htmlCode=$('#summernote').summernote('code');
-        $('#content').val(htmlCode);
-      })
+ 
       
     });
 </script>
