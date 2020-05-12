@@ -45,7 +45,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $this->data['posts']=$this->postsRepository->all();
-       
+
         return view('front.posts',$this->data);
     }
             /**
@@ -55,10 +55,10 @@ class HomeController extends Controller
      *
      * @return Response
      */
-    public function article($id)
+    public function article($slug)
     {
-        $post = $this->postsRepository->find($id);
-
+        $post = $this->postsRepository->getArticleBySlug($slug);
+        
         if (empty($post)) {
             Flash::error('Post not found');
             return redirect()->back();

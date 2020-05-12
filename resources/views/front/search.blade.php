@@ -21,21 +21,17 @@
         @foreach($posts as $post)
         <div class="col-md-12">
             <div class="blog-entry ftco-animate d-md-flex">
-                <a href="{{route('article',[$post->id])}}" class="img img-2" style="background-image: url('{{asset('uploads/catgory/')}}/{{$post->category->image_url}}');"></a>
+                <a href="{{route('article',[$post->slug])}}" class="img img-2" style="background-image: url('{{asset('uploads/catgory/')}}/{{$post->category->image_url}}');"></a>
                 <div class="text text-2 pl-md-4">
-                    <h3 class="mb-2"><a href="{{route('article',[$post->id])}}">{{$post->title}}</a></h3>
+                    <h3 class="mb-2"><a href="{{route('article',[$post->slug])}}">{{$post->title}}</a></h3>
                     <div class="meta-wrap">
                         <p class="meta">
                             <span><i class="icon-calendar mr-2"></i>{{ \Carbon\Carbon::parse($post->created_at)->format('j F, Y')}}</span>
-                            <span><a href="{{route('article',[$post->id])}}"><i class="icon-folder-o mr-2"></i>{{$post->category->category}}</a></span>
+                            <span><a href="{{route('article',[$post->slug])}}"><i class="icon-folder-o mr-2"></i>{{$post->category->category}}</a></span>
                             <span><i class="icon-comment2 mr-2"></i>{{$post->comments->count()}} Comment</span>
                         </p>
                     </div>
-                    <!-- <div class="truncate">                      
-                        {!! preg_replace("/<img[^>]+\>/i", "", $post->content) !!}
-                    </div>
-                    
-                    <p><a href="#" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p> -->
+                  
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ Route::group(['namespace' => 'front','middleware'=>'front'], function () {
 	Route::get('/signin', 'HomeController@signin')->name('signin');
 	Route::get('/usersignup', 'HomeController@signup')->name('userSignup');
     Route::get('/articles', 'HomeController@index')->name('.articles');
-    Route::get('/article/{id}', 'HomeController@article')->name('article');
+    Route::get('/article/{slug}', 'HomeController@article')->name('article');
     Route::get('/articles/{slug}', 'HomeController@getArticleByCategory')->name('articlesByCategory');
     Route::get('/articles/date/{slug}', 'HomeController@getArticleByDate')->name('getArticleByDate');
     Route::get('/articles/tag/{slug}', 'HomeController@getPostsByTags')->name('getPostsByTags');

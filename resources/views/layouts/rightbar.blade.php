@@ -25,11 +25,11 @@
 	    					<div class="block-21 mb-4 d-flex">
 	    						<a class="blog-img mr-4" style="background-image: url('{{asset('uploads/catgory/')}}/{{$post->category->image_url}}');"></a>
 	    						<div class="text">
-	    							<h3 class="heading"><a href="{{route('article',[$post->id])}}">{{$post->title}}</a></h3>
+	    							<h3 class="heading"><a href="{{route('article',[$post->slug])}}">{{$post->title}}</a></h3>
 	    							<div class="meta">
-	    								<div><a href="{{route('article',[$post->id])}}"><span class="icon-calendar"></span> {{ \Carbon\Carbon::parse($post->created_at)->format('j F, Y')}}</a></div>
-	    								<div><a href="{{route('article',[$post->id])}}"><span class="icon-person"></span> {{$post->user->name}}</a></div>
-	    								<div><a href="{{route('article',[$post->id])}}"><span class="icon-chat"></span> {{$post->comments->count()}}</a></div>
+	    								<div><a href="{{route('article',[$post->slug])}}"><span class="icon-calendar"></span> {{ \Carbon\Carbon::parse($post->created_at)->format('j F, Y')}}</a></div>
+	    								<div><a href="{{route('article',[$post->slug])}}"><span class="icon-person"></span> {{$post->user->name}}</a></div>
+	    								<div><a href="{{route('article',[$post->slug])}}"><span class="icon-chat"></span> {{$post->comments->count()}}</a></div>
 	    							</div>
 	    						</div>
 	    					</div>

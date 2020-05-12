@@ -51,6 +51,11 @@ class PostsRepository extends BaseRepository
         }
         return new \stdClass();
     }
+    public function getArticleBySlug($slug){
+       
+        return $this->model->where('slug',$slug)->Active()->firstOrFail();
+        
+    }
     public function getArticleByDate($slug){
         $empl=explode('-', $slug);
      
