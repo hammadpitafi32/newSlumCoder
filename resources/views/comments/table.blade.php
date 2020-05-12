@@ -1,11 +1,11 @@
 <div class="table-responsive">
-    <table class="table" id="comments-table">
+    <table class="table dataTable" id="comments-table">
         <thead>
             <tr>
                 <th>Post</th>
                 <th>User</th>
                 <th>Message</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

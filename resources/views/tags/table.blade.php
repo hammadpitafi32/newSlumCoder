@@ -1,10 +1,10 @@
 <div class="table-responsive">
-    <table class="table" id="tags-table">
+    <table class="table dataTable" id="tags-table">
         <thead>
             <tr>
                 <th>Tag</th>
                 <th>User</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

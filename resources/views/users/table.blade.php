@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="users-table">
+    <table class="table dataTable" id="users-table">
         <thead>
             <tr>
                 <th>Image</th>
@@ -10,7 +10,7 @@
                 <!-- <th>Password</th> -->
                 
                 <th>Created AT</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

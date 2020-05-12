@@ -1,17 +1,17 @@
 <div class="table-responsive">
-    <table class="table" id="userRoles-table">
+    <table class="table dataTable" id="userRoles-table">
         <thead>
             <tr>
                 <th>Model Type</th>
-        <th>Model Id</th>
-                <th colspan="3">Action</th>
+                <th>Model Id</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach($userRoles as $userRoles)
+            @foreach($userRoles as $userRoles)
             <tr>
                 <td>{{ $userRoles->model_type }}</td>
-            <td>{{ $userRoles->model_id }}</td>
+                <td>{{ $userRoles->model_id }}</td>
                 <td>
                     {!! Form::open(['route' => ['userRoles.destroy', $userRoles->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
@@ -22,7 +22,7 @@
                     {!! Form::close() !!}
                 </td>
             </tr>
-        @endforeach
+            @endforeach
         </tbody>
     </table>
 </div>

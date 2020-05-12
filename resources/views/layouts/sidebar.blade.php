@@ -3,16 +3,22 @@
 	<nav id="colorlib-main-menu" role="navigation">
 		<ul>
 			@if(!Auth::check())
-			<li><a href="{{route('userSignup')}}">New User?</a></li>
+			<li><a href="{{route('userSignup')}}">Sign Up</a></li>
 			<li><a href="{{route('signin')}}">Login</a></li>
+
 			@endif
 			<li class="@if(Route::current()->getName() == '.articles') colorlib-active  
-@endif"><a href="{{route('.articles')}}">Home</a></li>
+				@endif"><a href="{{route('.articles')}}">Home</a></li>
 			<li class="@if(Route::current()->getName() == 'about') colorlib-active  
-@endif"><a href="{{route('about')}}">About</a></li>
+				@endif"><a href="{{route('about')}}">About</a></li>
 			<li class="@if(Route::current()->getName() == 'contact') colorlib-active  
-@endif"><a href="{{route('contact')}}">Contact</a></li>
+				@endif"><a href="{{route('contact')}}">Contact</a></li>
 			@if(Auth::check())
+			
+			@hasanyrole('writer|super-admin')
+			<li><a href="{{route('profile')}}">Manage Account</a></li>
+			@endhasanyrole
+
 			<li><a href="{{route('Logout')}}">Logout</a></li>
 			@endif
 		</ul>
@@ -31,7 +37,7 @@
 			</form>
 		</div>
 		<p class="pfooter">
-			Copyright &copy; {{ now()->year }} All rights reserved by <a href="http://slumcoder.com" target="_blank">Slum Coder</a>
+			Copyright &copy; {{ now()->year }} All rights reserved by <a href="https://slumcoder.com" target="_blank">Slum Coder</a>
 		</p>
 	</div>
 </aside> 

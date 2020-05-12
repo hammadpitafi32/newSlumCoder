@@ -1,11 +1,11 @@
 <div class="table-responsive">
-    <table class="table" id="postCategories-table">
+    <table class="table dataTable" id="postCategories-table">
         <thead>
             <tr>
                 <th>Image</th>
                 <th>User</th>
                 <th>Category</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

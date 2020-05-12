@@ -1,12 +1,12 @@
 <div class="table-responsive">
-    <table class="table" id="contactMes-table">
+    <table class="table dataTable" id="contactMes-table">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Subject</th>
                 <th>Message</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

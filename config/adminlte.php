@@ -132,6 +132,11 @@ return [
             'text' => 'search',
             'search' => true,
         ],
+        [
+            'text' => 'Site Visit',
+            'url'  => '/articles',
+            'icon' => 'fa fa-window-maximize',
+        ],
         ['header' => 'main_navigation'],
         // [
         //     'text' => 'blog',
