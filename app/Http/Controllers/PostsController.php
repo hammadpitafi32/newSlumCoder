@@ -169,6 +169,7 @@ class PostsController extends AppBaseController
         $inputs=$request->all();
         $inputs['user_id']=auth()->user()->id;
         $inputs['slug']=str_replace(' ','-',strtolower($request->title));
+        $inputs['content']=$request->summernote;
         $posts = $this->postsRepository->update($inputs, $id);
 
         Flash::success('Posts updated successfully.');

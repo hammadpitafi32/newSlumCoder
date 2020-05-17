@@ -163,7 +163,7 @@ class HomeController extends Controller
         if($saveUser){
             $credentials = $request->only('email', 'password');
             if (Auth::attempt($credentials)) {
-                return redirect()->route('.articles')->with('success','Register successfully,Thanks');
+                return redirect()->route('.articles')->with('success','Register successfully.');
             }
         }
         return redirect()->back()->with('errors',['some thing went wrong!']);
@@ -183,7 +183,7 @@ class HomeController extends Controller
         $credentials = $request->only('email', 'password');
         
         if(Auth::attempt($credentials)) {
-            return redirect()->route('.articles')->with('success','Login successfully,Thanks');
+            return redirect()->route('.articles')->with('success','Login successfully.');
         }
         return redirect()->back()->with('error','Invalid Credentials.');
 
