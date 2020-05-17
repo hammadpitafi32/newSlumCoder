@@ -7,7 +7,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ isset($post->title)?$post->title:'slumcoder' }}</title>
+
+    <meta name="keywords" content="{{ isset($post->tags)?$post->tags:'' }}"/>
+    <meta name="description" content="{{ isset($post->content)?$post->content:'slumcoder is programmatic solution provider plateform which give ease to programers & students to learn new stuff related to programming.We provide best solution of every problem in the programming language such as php,html,css and Android.' }}"/>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-	<title>{{ config('app.name', 'Slum Coder') }}</title>
+	<title>{{ isset($post->title)?$post->title:'slumcoder' }}</title>
+
+    <meta name="keywords" content="{{ isset($post->tags)?$post->tags:'' }}"/>
+    <meta name="description" content="{{ isset($post->content)?$post->content:'slumcoder is programmatic solution provider plateform which give ease to programers & students to learn new stuff related to programming.We provide best solution of every problem in the programming language such as php,html,css and Android.' }}"/>
+	
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
