@@ -12,10 +12,12 @@
    	}else{
    		$tags='Laravel auth migrations php html laravel pagination';
    	}
-    
+
+    $content = strip_tags($post->content);
+   
     ?>
     <meta name="keywords" content="{{ $tags }}"/>
-    <meta maxlength="80" name="description" content="{{ isset($post->content)?$post->content:'slumcoder is programmatic solution provider plateform which give ease to programers & students to learn new stuff related to programming.We provide best solution of every problem in the programming language such as php,html,css and Android.' }}"/>
+    <meta maxlength="50"  name="description" content="{{ isset($post->content)?$content:'slumcoder is programmatic solution provider plateform which give ease to programers & students to learn new stuff related to programming.We provide best solution of every problem in the programming language such as php,html,css and Android.' }}"/>
 	
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
