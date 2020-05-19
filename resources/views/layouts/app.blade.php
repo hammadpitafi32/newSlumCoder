@@ -8,9 +8,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ isset($post->title)?$post->title:'slumcoder' }}</title>
-
-    <meta name="keywords" content="{{ isset($post->tags)?$post->tags:'' }}"/>
-    <meta maxlength="100" name="description" content="{{ isset($post->content)?$post->content:'slumcoder is programmatic solution provider plateform which give ease to programers & students to learn new stuff related to programming.We provide best solution of every problem in the programming language such as php,html,css and Android.' }}"/>
+    <?php if(isset($post->tags) && $post->tags->count()>0) {
+        $tags=$post->tags->toarray();
+    }else{
+        $tags=['Laravel','laravel migrations','laravel auth','php','html','laravel pagination'];
+    }
+    $tags=implode(',', $tags);
+    ?>
+    <meta name="keywords" content="{{ $tags }}"/>
+    <meta maxlength="80" name="description" content="{{ isset($post->content)?$post->content:'slumcoder is programmatic solution provider plateform which give ease to programers & students to learn new stuff related to programming.We provide best solution of every problem in the programming language such as php,html,css and Android.' }}"/>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
