@@ -3,6 +3,7 @@
 <head>
 	<title>{{ isset($post->title)?$post->title:'slumcoder' }}</title>
 	 <?php if(isset($post->tags) && $post->tags->count()>0) {
+	 	die('fixing');
         $tags=$post->tags->toarray();
     }else{
         $tags=['Laravel','laravel migrations','laravel auth','php','html','laravel pagination'];
