@@ -25,7 +25,7 @@
 	</nav>
 
 	<div class="colorlib-footer">
-		<h1 id="colorlib-logo" class="mb-4"><a href="{{route('.articles')}}" style="background-image: url('{{asset('themeImages/bg_1.jpg')}}');">Slum <span>Coder</span></a></h1>
+		<h2 id="colorlib-logo" class="mb-4"><a href="{{route('.articles')}}" style="background-image: url('{{asset('themeImages/bg_1.jpg')}}');">Slum <span>Coder</span></a></h2>
 		<div class="mb-4">
 			<h3>Subscribe for newsletter</h3>
 			<form action="{{route('subscribe')}}" method="POST" class="colorlib-subscribe-form">
