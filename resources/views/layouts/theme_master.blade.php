@@ -2,13 +2,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 	<title>{{ isset($post->title)?$post->title:'slumcoder' }}</title>
-	 <?php if(isset($post->tags) && $post->tags->count()>0) {
-	 	die('fixing');
-        $tags=$post->tags->toarray();
-    }else{
-        $tags=['Laravel','laravel migrations','laravel auth','php','html','laravel pagination'];
-    }
-    $tags=implode(',', $tags);
+   <?php 
+       
+   
+        $tags='Laravel auth migrations php html laravel pagination';
+    
     ?>
     <meta name="keywords" content="{{ $tags }}"/>
     <meta maxlength="80" name="description" content="{{ isset($post->content)?$post->content:'slumcoder is programmatic solution provider plateform which give ease to programers & students to learn new stuff related to programming.We provide best solution of every problem in the programming language such as php,html,css and Android.' }}"/>
