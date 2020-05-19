@@ -6,8 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
     <link rel="icon" href="{{asset('themeImages/slumcoder-logo.jpg')}}">
+    <meta name="keywords" content="{{ isset($post->tags)?$post->tags:'laravel,php,html,laravel auth,laravel migrations' }}"/>
+    <meta name="description" content="{{ isset($post->content)?$post->content:'slumcoder is programmatic solution provider plateform which give ease to programers & students to learn new stuff related to programming.We provide best solution of every problem in the programming language such as php,html,css and Android.' }}"/>
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
@@ -47,7 +48,7 @@
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">Sign in</h2>
+                        <h1 class="form-title">Sign in</h1>
                         <form method="POST" class="register-form" action="{{route('.userlogin')}}" id="register-form">
                             {{ csrf_field() }}
                             <div class="form-group">
