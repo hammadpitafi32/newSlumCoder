@@ -4,8 +4,14 @@
 	<title>{{ isset($post->title)?$post->title:'slumcoder' }}</title>
    <?php 
        
-   
-        $tags='Laravel auth migrations php html laravel pagination';
+   	if(isset($post->tags) && $post->tags->count()>0){
+
+        $tags=$post->tags->pluck('tag')->pluck('tag')->toarray();
+        $tags=implode(",", $tags);
+     
+   	}else{
+   		$tags='Laravel auth migrations php html laravel pagination';
+   	}
     
     ?>
     <meta name="keywords" content="{{ $tags }}"/>
