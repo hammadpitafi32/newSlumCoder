@@ -58,10 +58,62 @@
 	#colorlib-aside{
 		padding-top: 2em !important;
 	}
+	.navbar {
+		padding: 0.5rem 4rem !important;
+	}
+	.navbar-collapse li a{
+		color: white !important;
+	}
+	.dropdown-menu a{
+		color: black !important;
+	}
+
 </style>
 <body>
+	<nav class="navbar navbar-expand-lg navbar-light navbar bg-primary"><b>
+		  <a style="color: white;" class="navbar-brand" href="{{url('/')}}">SlumCoder</a></b>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+			    <li class="nav-item @if(Route::current()->getName() == '.articles') colorlib-active  
+					@endif"><a class="nav-link" href="{{route('.articles')}}">Home</a></li>
+				<li class="nav-item @if(Route::current()->getName() == 'about') colorlib-active  
+					@endif"><a class="nav-link" href="{{route('about')}}">About</a></li>
+				<li class="nav-item @if(Route::current()->getName() == 'contact') colorlib-active  
+					@endif"><a class="nav-link" href="{{route('contact')}}">Contact</a></li>
+		      
+		    </ul>
+		    @if(!Auth::check())
+		    <ul class="navbar-nav  my-2 my-lg-0">
+			    <li class="nav-item"><a class="nav-link" href="{{route('signin')}}">Login</a></li>
+				<li class="nav-item"><a class="nav-link" href="{{route('userSignup')}}">Sign Up</a></li>
+			</ul>
+			@else
+		    <ul class="navbar-nav  my-2 my-lg-0">
+		    	     <li class="nav-item dropdown pull-right">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		         {{Auth::user()->name}}
+		        </a>
+		       
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          <a style="color: black !important" class="dropdown-item" href="{{route('profile')}}">Profile</a>
+		          <a style="color: black !important" class="dropdown-item" href="{{route('Logout')}}">Logout</a>
+		          <!-- <div class="dropdown-divider"></div> -->
+		          <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+		        </div>
+		       
+		      </li>
+		    </ul>
+		    @endif
+			
+		  </div>
+		</nav>
 
 	<div class="container-fluid">
+		
 		<div class="row">
 			<div class="col-md-3">
 				@include('layouts.sidebar')
@@ -86,10 +138,14 @@
 			</div>
 			@endif
 			
-
-
 		</div>
+
 	</div>
+	<div style="margin-top: 2%;">
+		@include('layouts.footer')
+	</div>
+	
+
 
 	<!-- END COLORLIB-PAGE -->
 

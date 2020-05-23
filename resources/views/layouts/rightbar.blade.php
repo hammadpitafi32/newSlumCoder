@@ -7,7 +7,7 @@
 	    						</div>
 	    					</form>
 	    				</div>
-	    				<div class="sidebar-box ftco-animate">
+	    				<!-- <div class="sidebar-box ftco-animate">
 	    					<h3 class="sidebar-heading">Categories</h3>
 	    					<ul class="categories">
 	    						@if($category->count()>0)
@@ -16,7 +16,7 @@
 	    						@endforeach
 	    						@endif
 	    					</ul>
-	    				</div>
+	    				</div> -->
 
 	    				<div class="sidebar-box ftco-animate">
 	    					<h3 class="sidebar-heading">Popular Articles</h3>
