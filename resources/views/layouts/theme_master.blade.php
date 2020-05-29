@@ -81,9 +81,11 @@
 			    <li class="nav-item @if(Route::current()->getName() == '.articles') colorlib-active  
 					@endif"><a class="nav-link" href="{{route('.articles')}}">Home</a></li>
 				<li class="nav-item @if(Route::current()->getName() == 'about') colorlib-active  
-					@endif"><a class="nav-link" href="{{route('about')}}">About</a></li>
+					@endif"><a class="nav-link" href="{{route('about')}}">About US</a></li>
+				<li class="nav-item @if(Route::current()->getName() == 'policy') colorlib-active  
+					@endif"><a class="nav-link" href="{{route('policy')}}">Privacy Policy</a></li>
 				<li class="nav-item @if(Route::current()->getName() == 'contact') colorlib-active  
-					@endif"><a class="nav-link" href="{{route('contact')}}">Contact</a></li>
+					@endif"><a class="nav-link" href="{{route('contact')}}">Contact US</a></li>
 		      
 		    </ul>
 		    @if(!Auth::check())

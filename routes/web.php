@@ -30,6 +30,7 @@ Route::group(['namespace' => 'front','middleware'=>'front'], function () {
     Route::get('/logout', 'HomeController@logout')->name('Logout');
     Route::post('/userlogin', 'HomeController@login')->name('.userlogin');
     Route::get('/about', 'HomeController@about')->name('about');
+    Route::get('/policy', 'HomeController@policy')->name('policy');
     Route::get('/contact', 'HomeController@contact')->name('contact');
     Route::post('/postcontact', 'HomeController@contactMe')->name('contactme');
 

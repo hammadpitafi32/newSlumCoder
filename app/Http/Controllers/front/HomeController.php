@@ -196,6 +196,10 @@ class HomeController extends Controller
         $author=Users::where('id',1)->first();
         return view('front.about')->with('author', $author);
     }
+    public function policy(){
+       
+        return view('front.privacy_policy');
+    }
     public function contact(){
         return view('front.contact');
     }
