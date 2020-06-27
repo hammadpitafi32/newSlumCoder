@@ -19,7 +19,7 @@
 	    				</div> -->
 
 	    				<div class="sidebar-box ftco-animate">
-	    					<h3 class="sidebar-heading">Popular Articles</h3>
+	    					<h3 class="sidebar-heading">Latest Articles</h3>
 	    					@if($popArticles->count()>0)
 	    					@foreach($popArticles as $post)
 	    					<div class="block-21 mb-4 d-flex">

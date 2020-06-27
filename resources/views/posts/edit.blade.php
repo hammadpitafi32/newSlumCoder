@@ -28,7 +28,13 @@
 @section('js')
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/uy0zgera9l80yghcdlg3qmcg9pog8pp6sx3x9sysk1gos51k/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+      tinymce.init({
+        selector: '#summernote'
+      });
+</script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
       
@@ -41,5 +47,5 @@
  
       
     });
-</script>
+</script> -->
 @endsection
