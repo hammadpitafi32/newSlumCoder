@@ -7,7 +7,7 @@
 </div>
 <div class="form-group col-sm-12">
     {!! Form::label('content', 'Content:') !!}
-    {!! Form::textarea('summernote',isset($posts)?$posts->content:null, ['id'=>'summernote','class' => 'form-control']) !!}
+    {!! Form::textarea('content',isset($posts)?$posts->content:null, ['id'=>'summernote','class' => 'form-control']) !!}
 </div>
 <div class="form-group col-sm-6">
     {!! Form::label('Category', 'Category:') !!}
