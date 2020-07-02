@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+	<script data-ad-client="ca-pub-8664692669326172" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<title>{{ isset($post->title)?$post->title:'slumcoder' }}</title>
    <?php 
        
