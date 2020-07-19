@@ -9,7 +9,7 @@
         </thead>
         <tbody>
             @foreach($postTags as $postTags)
-            @if(isset($postTags->tag->tag))
+            @if(isset($postTags->tag->tag) && isset($postTags->post->title))
             <tr>
                 <td>{{ $postTags->tag->tag }}</td>
                 <td>{{ $postTags->post->title}}</td>
