@@ -9,6 +9,7 @@
         </thead>
         <tbody>
             @foreach($postTags as $postTags)
+            @if(isset($postTags->tag->tag))
             <tr>
                 <td>{{ $postTags->tag->tag }}</td>
                 <td>{{ $postTags->post->title}}</td>
@@ -22,6 +23,7 @@
                     {!! Form::close() !!}
                 </td>
             </tr>
+            @endif
             @endforeach
         </tbody>
     </table>
