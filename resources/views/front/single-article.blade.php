@@ -46,7 +46,7 @@
 									@foreach($post->comments as $comment)
 									<li class="comment">
 										<div class="vcard bio">
-											<img src="{{asset('uploads/users/')}}/{{$comment->user->image_url}}" alt="Image placeholder">
+											<img src="{{$comment->user->image_url}}" alt="Image placeholder">
 										</div>
 										<div class="comment-body">
 											<h3>{{$comment->user->name}}</h3>
