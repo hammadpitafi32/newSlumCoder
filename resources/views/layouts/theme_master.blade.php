@@ -168,9 +168,9 @@
 	<script src="{{asset('themeJs/aos.js')}}"></script>
 	<script src="{{asset('themeJs/jquery.animateNumber.min.js')}}"></script>
 	<script src="{{asset('themeJs/scrollax.min.js')}}"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="{{asset('themeJs/google-map.js')}}"></script>
+
 	<script src="{{asset('themeJs/main.js')}}"></script>
+	@yield('js')
 
 </body>
 </html>

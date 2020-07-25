@@ -26,7 +26,7 @@
          <div class="blog-entry ftco-animate d-md-flex">
             <a href="{{route('article',[$post->slug])}}" class="img img-2" style="background-image: url('{{asset('uploads/catgory/')}}/{{$post->category->image_url}}');"></a>
             <div class="text text-2 pl-md-4">
-               <h3 class="mb-2"><a href="{{route('article',[$post->slug])}}">{{$post->title}}</a></h3>
+               <h1 class="mb-2"><a href="{{route('article',[$post->slug])}}">{{$post->title}}</a></h1>
                <div class="meta-wrap">
                   <p class="meta">
                      <span><i class="icon-calendar mr-2"></i>{{ \Carbon\Carbon::parse($post->created_at)->format('j F, Y')}}</span>

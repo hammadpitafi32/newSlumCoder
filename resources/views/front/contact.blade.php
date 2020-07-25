@@ -63,4 +63,9 @@
 		</div>
 	</section>
 </div>
+	
+@endsection
+@section('js')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="{{asset('themeJs/google-map.js')}}"></script>
 @endsection
