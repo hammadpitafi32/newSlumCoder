@@ -47,7 +47,7 @@ class PostsRepository extends BaseRepository
         
         if(!empty($catId)){
 
-            return $this->model->where('category_id',$catId->id)->Active()->get();
+            return $this->model->where('category_id',$catId->id)->Active()->paginate(15);
         }
         return new \stdClass();
     }
@@ -59,7 +59,7 @@ class PostsRepository extends BaseRepository
     public function getArticleByDate($slug){
         $empl=explode('-', $slug);
      
-        return $this->model->whereMonth('created_at',$empl[0])->whereYear('created_at',$empl[1])->Active()->get();
+        return $this->model->whereMonth('created_at',$empl[0])->whereYear('created_at',$empl[1])->Active()->paginate(15);
         
     }
 
@@ -69,7 +69,7 @@ class PostsRepository extends BaseRepository
         if(!empty($tag)){
             
             $getTagPosts=PostTags::where('tag_id',$tag->id)->pluck('post_id');
-            return $this->model->whereIn('id',$getTagPosts)->Active()->get();
+            return $this->model->whereIn('id',$getTagPosts)->Active()->paginate(15);
         }
         return new \stdClass();
         

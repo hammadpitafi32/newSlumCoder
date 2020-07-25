@@ -39,6 +39,7 @@
      </div>
  </div>
  @endforeach
+ {{ $posts->links() }}
  @else
  <div class="col-md-12 alert alert-warning">
     <strong>Sorry!</strong> Not a single post is found.

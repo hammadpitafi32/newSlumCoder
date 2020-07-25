@@ -44,7 +44,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $this->data['posts']=$this->postsRepository->all();
+        $this->data['posts']=$this->postsRepository->paginate(15);
 
         return view('front.posts',$this->data);
     }
