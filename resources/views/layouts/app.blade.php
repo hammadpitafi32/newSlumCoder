@@ -17,7 +17,7 @@
         $tags=implode(",", $tags);
      
     }else{
-        $tags='Laravel auth migrations php html laravel pagination';
+        $tags='Laravel,auth, migrations, php, html,laravel,pagination';
     }
     if(isset($post->content)){
         $content = substr($post->content,0,150);
