@@ -20,7 +20,7 @@
         $tags='Laravel auth migrations php html laravel pagination';
     }
     if(isset($post->content)){
-        $content = strip_tags($post->content);
+        $content = substr($post->content,0,150);
     }else{
         $content='slumcoder is programmatic solution provider plateform which give ease to programers & students to learn new stuff related to programming.We provide best solution of every problem in the programming language such as php,html,css and Android.';
     }
@@ -28,7 +28,7 @@
    
     ?>
     <meta name="keywords" content="{{ $tags }}"/>
-    <meta maxlength="50"  name="description" content="{{ $content }}"/>
+    <meta name="description" content="{{ $content }}"/>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
