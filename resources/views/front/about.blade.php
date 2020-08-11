@@ -14,7 +14,11 @@
 					<div class="text px-4 pt-5 pt-md-0 px-md-4 pr-md-5 ftco-animate">
 						<h2 class="mb-4"><span>SlumCoder</span> Blog Website</h2>
 						<p>
-							Hello welcome to my SlumCoder Posts Blog Website. SlumCoder is the finest tutorial for learners and we offer tutorials of Php, Android,Laravel, Html, Mysql, CSS,Jquery, , Javascript, JSON, Ajax, laravel API’s. I have been employed as a web developer for the extensive term. So. I decided to create this blog website tutorial and now i have public my working experience.Now i want to share my knowledge for learners web developer’s and I am serving him which most people are searching the solution of programming languages associated code. While we will add new Post or articles and you subscribed our website then you will get the notification. So you can get our newest updates. In case you have any question or proposal then you can ask and in case you like our posts or article then you can engrave your feedback, share and like.I hope you will get more help from this website.
+							Hello, I welcome you all to my blog where I regularly post my finest tutorials of PHP, Android, JavaScript, Laravel, HTML, MySQL, CSS, JQuery and laravel Api’s for beginners. I have been employed as a web developer since 2015, where I worked extensively on numerous national and international projects. Recently I have decided to share my knowledge and experience with everyone who is interested in web development or starting a new voyage in this ever evolving field. I also hope that this blog will serve those people who are looking towards some solutions for their web applications.
+						</p>
+						<p>
+							While I will be adding new posts or articles every week, I would appreciate if you may give a like and share these posts with your friends. You can also subscribe to the email notifications that will keep you informed about my latest postings, In case you have any questions or proposals, please do not hesitate to contact.
+
 						</p>
 					</div>
 				</div>
