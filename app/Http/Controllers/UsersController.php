@@ -8,6 +8,7 @@ use App\Repositories\UsersRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use App\Models\Roles;
+use Validator;
 // use App\Models\UserRoles;
 use Flash;
 use Hash;
@@ -215,8 +216,31 @@ class UsersController extends AppBaseController
 
         return redirect()->route('home');
     }
-    public function postChangePassword(){
-        die('dasdassssss');
+    public function postChangePassword(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'new_password' => 'required|min:6',
+            'old_password' => 'required',
+            'confirm_password' => 'required_with:new_password|same:new_password|min:6',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        if (!Hash::check($request->old_password, auth()->user()->password)){
+            Flash::error('Old Password is incorrect.');
+            return redirect(route('users.index'));
+        }
+        $user=auth()->user();
+        $user->update([
+                'password' => Hash::make($request->new_password)
+            ]);
+        Flash::success('Password updated successfully.');
+        return redirect()->route('users.index');
+
     }
 
 }

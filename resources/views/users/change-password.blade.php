@@ -16,18 +16,18 @@
         <!-- old Pssword Field -->
       <div class="form-group col-sm-6">
         {!! Form::label('old_password', 'Old Password:') !!}
-        {!! Form::text('old_password', null, ['class' => 'form-control']) !!}
+        {!! Form::password('old_password',  ['class' => 'form-control']) !!}
       </div>
       <!--new Pssword Field -->
       <div class="form-group col-sm-6">
         {!! Form::label('new_password', 'New Password:') !!}
-        {!! Form::text('new_password', null, ['class' => 'form-control']) !!}
+        {!! Form::password('new_password', ['class' => 'form-control']) !!}
       </div>
 
        <!--confirm Pssword Field -->
       <div class="form-group col-sm-6">
         {!! Form::label('confirm_password', 'confirm Password:') !!}
-        {!! Form::text('confirm_password', null, ['class' => 'form-control']) !!}
+        {!! Form::password('confirm_password',  ['class' => 'form-control']) !!}
       </div>
 
 
