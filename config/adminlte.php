@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'Blogx',
+    'title' => 'SlumCoder',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Blog</b>x',
+    'logo' => '<b>Slum</b>Coder',
 
-    'logo_mini' => '<b>B</b>X',
+    'logo_mini' => '<b>S</b>C',
 
     /*
     |--------------------------------------------------------------------------

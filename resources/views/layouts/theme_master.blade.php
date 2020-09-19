@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 	<script data-ad-client="ca-pub-8664692669326172" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<title>{{ isset($post->title)?$post->title:'slumcoder' }}</title>
+	<title>{{ isset($post->title)?$post->title:'SlumCoder' }}</title>
    <?php 
        
    	if(isset($post->tags) && $post->tags->count()>0){
@@ -72,7 +72,7 @@
 </style>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light navbar bg-primary"><b>
-		  <a style="color: white;" class="navbar-brand" href="{{url('/')}}">Blogx</a></b>
+		  <a style="color: white;" class="navbar-brand" href="{{url('/')}}">SlumCoder</a></b>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
