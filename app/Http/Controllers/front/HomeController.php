@@ -63,10 +63,13 @@ class HomeController extends Controller
             Flash::error('Post not found');
             return redirect()->back();
         }
-        
+        $visitors = $post->total_seen + 1;
+        $post->update(["total_seen"=>$visitors]);
+  
         $post->load('tags.tag');
         $post->load('user');
         $post->load('comments.user');
+ 
 
         return view('front.single-article')->with('post', $post);
     }
