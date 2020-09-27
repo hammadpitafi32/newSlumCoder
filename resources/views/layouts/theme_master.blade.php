@@ -175,7 +175,7 @@
 </body>
 </html>
 <script type="text/javascript">
-	// removeTags();
+	removeTags();
 	setImageWidth();
 	function setImageWidth() {
 		
