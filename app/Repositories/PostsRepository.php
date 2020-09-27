@@ -53,7 +53,7 @@ class PostsRepository extends BaseRepository
     }
     public function getArticleBySlug($slug){
        
-        return $this->model->where('slug',$slug)->Active()->firstOrFail();
+        return $this->model->where('slug',$slug)->with('totalSeen')->Active()->firstOrFail();
         
     }
     public function getArticleByDate($slug){

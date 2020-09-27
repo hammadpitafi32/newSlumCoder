@@ -92,5 +92,9 @@ class Posts extends Model
     {
         return 'title';
     }
+    public function totalSeen()
+    {
+        return $this->belongsTo('App\Models\TotalSeen','id','post_id');
+    }
     
 }

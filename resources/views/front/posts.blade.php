@@ -32,7 +32,7 @@
                      <span><i class="icon-calendar mr-2"></i>{{ \Carbon\Carbon::parse($post->created_at)->format('j F, Y')}}</span>
                      <span><a href="{{route('article',[$post->slug])}}"><i class="icon-folder-o mr-2"></i>{{$post->category->category}}</a></span>
                      <span><i class="icon-comment2 mr-2"></i>{{$post->comments->count()}} Comment</span>
-                     <span><i class="icon-eye mr-2"></i>{{$post->total_seen}}</span>
+                     <span><i class="icon-eye mr-2"></i>{{isset($post->totalSeen->total_seen)?$post->totalSeen->total_seen:0}}</span>
                  </p>
              </div>
            

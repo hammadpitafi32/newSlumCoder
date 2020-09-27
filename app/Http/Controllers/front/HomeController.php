@@ -11,6 +11,7 @@ use App\Models\Comments;
 use App\Models\Posts;
 use App\Models\Users;
 use App\Models\ContactMe;
+use App\Models\TotalSeen;
 use App\Models\NewsLetter;
 use Validator;
 use View;
@@ -57,14 +58,27 @@ class HomeController extends Controller
      */
     public function article($slug)
     {
+
         $post = $this->postsRepository->getArticleBySlug($slug);
-        
+       
         if (empty($post)) {
             Flash::error('Post not found');
             return redirect()->back();
         }
-        $visitors = $post->total_seen + 1;
-        $post->update(["total_seen"=>$visitors]);
+        $visitors = [];
+   
+        if($post->totalSeen){
+ 
+           $total=$post->totalSeen->total_seen + 1;
+        }else{
+            $total=1;
+        }
+     
+        TotalSeen::updateOrCreate(
+            ['post_id' => $post->id],
+            ['post_id' => $post->id, 'total_seen' => $total]
+        );
+        // $post->update(["total_seen"=>$visitors]);
   
         $post->load('tags.tag');
         $post->load('user');
