@@ -175,6 +175,7 @@
 </body>
 </html>
 <script type="text/javascript">
+	removeTags();
 	setImageWidth();
 	function setImageWidth() {
 		
@@ -202,5 +203,19 @@
 
 		});
 	});
+	function removeTags(){
+		$('p').each(function() {
+	    var $this = $(this);
+	    if($this.html().replace(/\s|&nbsp;/g, '').length == 0)
+	        $this.remove();
+		});
+		$("code").unwrap('p');
+		
+		// $('code').after( '<br />' );
+		$("code").wrap( "<div class='col-md-12 codedive'></div>" );
+		$('.codedive').css( {"background-color": "black", "color": "white"} );
+		$('.codedive').next('br').remove();
+	}
+	
 
 </script>
